@@ -46,6 +46,7 @@ export default function Home() {
             Kostenlose Beratung
           </button>
           <Image
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             src="/highlight_white.svg"
             alt="highlight"
             width={800}
