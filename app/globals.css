@@ -5,3 +5,15 @@
 body {
   background-image: url("/background_muster.svg");
 }
+.highlight {
+  -webkit-user-drag: none;
+}
+
+.angle_right {
+  transform: skew(-45deg);
+  width: calc(8rem / sqrt(2));
+}
+.angle_left {
+  transform: skew(45deg);
+  width: calc(8rem / sqrt(2));
+}

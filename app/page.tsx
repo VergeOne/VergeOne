@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 export default function Home() {
   const pathname = usePathname();
   return (
-    <div className="relative h-full ml-32 mr-32  border-x-2 border-brand-prim text-white">
+    <div className="relative h-[160vh] ml-32 mr-32  border-x-2 border-brand-prim text-white">
       <div className="h-lvh relative">
         <div className="relative h-[10vh]">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 h-full flex items-center gap-6  text-xl">
@@ -43,11 +43,11 @@ export default function Home() {
               Ihr Partner für Atemberaubende Online-Lösungen, die ihnen nicht
               nur Zeit sparen, sondern das beste daraus machen
             </p>
-            <button className="rounded-full mt-2 tracking-widest font-medium border-solid border-white py-2 px-6 border-2 bg-gradient-to-br from-brand-sec/70 to-brand-prim/70">
+            <button className="rounded-full mt-2 tracking-widest font-medium border-solid border-white py-2 px-6 border-2 bg-gradient-to-br from-brand-sec/80 to-brand-prim/70">
               Kostenlose Beratung
             </button>
             <Image
-              className="absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 blur-[250px]"
+              className="highlight absolute top-[60%] left-1/2 -translate-x-1/2 select-none -translate-y-1/2 blur-[250px]"
               src="/highlight_white.svg"
               alt="highlight"
               width={1000}
@@ -55,12 +55,16 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="bg-white w-lvw h-[1px] absolute bottom-0 left-1/2 -translate-x-1/2" />
+        <div className="bg-white/55 w-lvw h-[1px] absolute bottom-0 left-1/2 -translate-x-1/2" />
+        {/* angled lines */}
+        <div className="absolute bottom-0 h-32 right-[4rem] angle_right border-r-[1px] border-white" />
+        <div className="absolute bottom-0 h-32 left-[4rem] angle_left border-l-[1px] border-white" />
+        {/* end angled lines */}
       </div>
       {/* END HERO */}
       {/* Introduction */}
       <div className="h-[60vh] relative">
-        <div className="ml-32 h-full mr-32 px-14 py-14 border-white border-x-[1px] flex justify-between items-center">
+        <div className="ml-32 h-full mr-32 px-14 py-14 border-white/55 border-x-[1px] flex justify-between items-center">
           <div className="w-2/3 text-xl tracking-widest">
             <p>
               Du willst dir und deinem Team so viel Zeit wie möglich einsparen
@@ -80,7 +84,7 @@ export default function Home() {
             <h2 className="text-3xl">Geld zurück</h2>
           </div>
         </div>
-        <div className="bg-white w-lvw h-[1px] absolute bottom-0 left-1/2 -translate-x-1/2" />
+        <div className="bg-white/55 w-lvw h-[1px] absolute bottom-0 left-1/2 -translate-x-1/2" />
       </div>
       {/* END Introduction */}
       <div className="h-[200vh]"></div>
