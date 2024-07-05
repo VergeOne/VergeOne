@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="w-full h-full">
-      <body className={monte.className + " w-full h-full bg-brand-dark"}>
+    <html lang="en" className="w-full border-solid overflow-x-hidden">
+      <body className={monte.className + " w-full bg-brand-dark"}>
         {children}
       </body>
     </html>
