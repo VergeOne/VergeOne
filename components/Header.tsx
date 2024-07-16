@@ -1,23 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
-const Header = () => {
+const Header = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
   return (
-    <div className="h-[14vh] w-full flex items-center relative text-white tracking-[0.2em]">
-      <div className="absolute left-20 flex items-center">
+    <div className="h-[14vh] w-full flex items-center relative text-white tracking-[0.25em]">
+      <div className="animate-fadeLeft absolute left-20 flex items-center">
         <Link href="/">
           <Image src="/logo.svg" alt="Logo" width={65} height={62} />
         </Link>
       </div>
-      <div className="flex gap-6 items-center absolute left-1/2 -translate-x-1/2 font-normal text-xl">
-        <Link className="" href="/">
-          Home
-        </Link>
-        <Link href="/#Dienstleistungen">Dienstleistungen</Link>
-        <Link href="/#Preise">Preise</Link>
-        <Link href="/#Portfolio">Portfolio</Link>
-        <Link href="/#Kontakt">Kontakt</Link>
+      <div className="flex gap-8 items-center *:hover:cursor-pointer animate-fadeTop absolute left-1/2 -translate-x-1/2 font-normal text-[1.3rem]">
+        <h2 onClick={() => scrolltoAnchor("Home")}>Home</h2>
+        <h2 onClick={() => scrolltoAnchor("Dienstleistungen")}>
+          Dienstleistungen
+        </h2>
+        <h2 onClick={() => scrolltoAnchor("Preise")}>Preise</h2>
+        <h2 onClick={() => scrolltoAnchor("Portfolio")}>Portfolio</h2>
+        <h2 onClick={() => scrolltoAnchor("Kontakt")}>Kontakt</h2>
       </div>
-      <div className="flex gap-8 items-center absolute right-20">
+      <div className="animate-fadeRight flex select-none gap-8 items-center absolute right-20">
         <Image
           src="/instagram.svg"
           alt="Instagram-logo"

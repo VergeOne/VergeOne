@@ -17,10 +17,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className={inter.className + " text-white bg-brand-dark w-full"}>
-        <div className="z-10 w-full bg-[url('/noise.png')] bg-repeat">
-          {children}
-        </div>
+      <body
+        className={
+          inter.className +
+          " overflow-x-hidden relative text-white bg-brand-dark w-full"
+        }
+      >
+        <div className="z-30 w-full absolute top-0 left-0 h-full pointer-events-none opacity-60 bg-[url('/noise-transparent.png')] bg-repeat" />
+        {children}
       </body>
     </html>
   );

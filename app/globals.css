@@ -2,3 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+body * {
+  -webkit-user-drag: none;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.text-animate {
+  opacity: 0;
+  animation: fade forwards linear;
+  animation-timeline: view();
+  animation-range: 15% 60%;
+}
