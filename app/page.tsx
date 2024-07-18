@@ -48,11 +48,11 @@ export default function Home() {
               Kontakt
             </button>
             <Image
-              className="select-none drag absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
+              className="select-none drag absolute top-1/2 left-1/2 -translate-x-1/2 blur-[100px] -translate-y-1/2 -z-10"
               src="/hero_high.svg"
               alt="Blob"
-              width={1000}
-              height={700}
+              width={1200}
+              height={800}
             />
           </div>
           {/* End Hero Content Wrapper */}

@@ -22,7 +22,7 @@ const config: Config = {
           },
           to: {
             opacity: "0.1",
-            transform: "translate(-100vw,-50%)",
+            transform: "translate(-70vw,-50%)",
           },
         },
         fade: {
