@@ -84,16 +84,43 @@ export default function Home() {
       </div>
       {/* End Intro Wrapper */}
       {/* Start Scroll-animation Wrapper */}
-      <div className="h-[130vh] relative">
+      <div className="h-[100vh] relative">
         <Image
-          className="animate-blob-trans [animation-timeline:view()] select-none drag absolute translate-x-1/2 translate-y-1/2 bottom-0 right-0 -z-10"
+          className="animate-blob-trans [animation-timeline:view()] blur-[200px] select-none drag absolute translate-x-1/2 translate-y-1/2 bottom-0 right-0 -z-10"
           src="/hero_high.svg"
           alt="Blob"
-          width={2500}
-          height={1000}
+          width={3500}
+          height={2500}
         />
       </div>
       {/* End Scroll-animation Wrapper */}
+      {/* Start Mission Wrapper */}
+      <div className="h-[70vh] flex items-center justify-center">
+        {/* Start Mission Content Wrapper */}
+        <div className="flex flex-col gap-8 items-center justify-center">
+          <h2
+            className={
+              monte.className +
+              " text-animate text-[60px] font-medium tracking-[0.25em]"
+            }
+          >
+            Unsere Mission
+          </h2>
+          <p className="text-animate text-center text-2xl leading-10 tracking-[0.27em] w-[70%]">
+            Wir wissen wie wertvoll Ihre Zeit ist. Daher geben wir unser Bestes
+            Ihnen davon so viel wie möglich einzusparen.
+            <br />
+            <br />
+            Wir bieten Ihnen maßgeschneiderte Anwendungen nach ihren Belieben.
+            Kein Kaufen und Ärgern über fehlende Funktionen mehr.
+            <br />
+            <br /> Sagen Sie uns einfach was Sie brauchen und wir setzten es um.
+          </p>
+        </div>
+        {/* End Mission Content Wrapper */}
+      </div>
+      {/* End Mission Wrapper */}
+      <div className="h-[50vh]"></div>
     </>
   );
 }
