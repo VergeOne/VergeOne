@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Verge-One",
   description:
-    "Ihr Partner für Web-Dienstleistungen, die ihr Unternehmen herausstechen lassen.",
+    "Ihr Partner für Web-Dienstleistungen, die ihr Unternehmen herausstechen lassen. Maßgeschneiderte Applikationen, Automationen und Datenbankanbindungen",
 };
 
 export default function RootLayout({

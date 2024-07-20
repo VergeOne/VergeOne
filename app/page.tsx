@@ -1,11 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { Montserrat } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { useState } from "react";
 
 const monte = Montserrat({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], weight: ["200"] });
 export default function Home() {
+  const [mailsucc, setMailsucc] = useState(false);
+  const [mailfailed, setMailfailed] = useState(false);
   const scrolltoAnchor = (id: string) => {
     try {
       const y =
@@ -37,7 +42,7 @@ export default function Home() {
             <h3 className="w-full text-center text-2xl tracking-[0.27em]">
               Ihr Partner für Web-Dienstleistungen,
               <br />
-              die ihr Unternehmen herausstechen lassen.
+              die das Beste aus ihrem Unternehmen herausholen.
             </h3>
             <button
               onClick={() => {
@@ -95,7 +100,7 @@ export default function Home() {
       </div>
       {/* End Scroll-animation Wrapper */}
       {/* Start Mission Wrapper */}
-      <div className="h-[70vh] flex items-center justify-center">
+      <div className="h-[60vh] flex items-center justify-center">
         {/* Start Mission Content Wrapper */}
         <div className="flex flex-col gap-8 items-center justify-center">
           <h2
@@ -114,13 +119,102 @@ export default function Home() {
             Wir bieten Ihnen maßgeschneiderte Anwendungen nach ihren Belieben.
             Kein Kaufen und Ärgern über fehlende Funktionen mehr.
             <br />
-            <br /> Sagen Sie uns einfach was Sie brauchen und wir setzten es um.
+            <br />
+            Sagen Sie uns einfach was Sie brauchen und wir setzten es um.
           </p>
         </div>
         {/* End Mission Content Wrapper */}
       </div>
       {/* End Mission Wrapper */}
+      {/* Start Customer Wrapper */}
+      {/*
       <div className="h-[50vh]"></div>
+      */}
+      {/* End Customer Wrapper */}
+      {/* Start Offer Wrapper */}
+      <div className="h-[50vh] text-animate px-24 flex items-center justify-between w-full gap-8 mt-24">
+        <div id="Preise" className="offer">
+          <h1>Automationen</h1>
+          <div>
+            <p>- SSL-Verschlüsselung</p>
+            <p>- Mail-Automationen</p>
+            <p>- Elimination repetitiver Aufgaben</p>
+          </div>
+          <h2>
+            <span>ab </span> 245€
+          </h2>
+        </div>
+        <div id="offer-mid" className="offer">
+          <h1>Custom-Solutions</h1>
+          <div>
+            <p>- SSL-Verschlüsselung</p>
+            <p>- Mail-Automationen</p>
+            <p>- Elimination repetitiver Aufgaben</p>
+          </div>
+          <h2>
+            <span>ab </span> 995€
+          </h2>
+        </div>
+        <div className="offer">
+          <h1>Datenbanken</h1>
+          <div>
+            <p>- SSL-Verschlüsselung</p>
+            <p>- Mail-Automationen</p>
+            <p>- Elimination repetitiver Aufgaben</p>
+          </div>
+          <h2>
+            <span>ab </span> 495€
+          </h2>
+        </div>
+      </div>
+      <div className="h-[40vh] flex items-center justify-center">
+        <button
+          onClick={() => {
+            scrolltoAnchor("Kontakt");
+          }}
+          className="border-solid text-animate-less rounded-full border-2 border-white tracking-[0.25em] text-2xl font-normal py-3 px-12"
+        >
+          Kontakt
+        </button>
+      </div>
+      {/* End Offer Wrapper */}
+      {/* Start Form Wrapper */}
+      <div id="Kontakt" className={inter.className + " form"}>
+        <div>
+          <p>Name</p>
+          <input type="text" />
+        </div>
+        <div>
+          <p className=" font">Email</p>
+          <input type="email" />
+        </div>
+        <div>
+          <p>Ich bin interessiert an...</p>
+          <div className="h-12 flex gap-4 ">
+            <button className="py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60">
+              Custom-Anwendung
+            </button>
+            <button className="py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60">
+              Automationen
+            </button>
+            <button className="py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60">
+              Datenbankanbindung
+            </button>
+            <button className="py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60">
+              Beratungsgespräch
+            </button>
+            <button className="py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60">
+              Allgemein
+            </button>
+          </div>
+        </div>
+        <div>
+          <p>Nachricht</p>
+          <textarea />
+        </div>
+      </div>
+      {/* End Form Wrapper */}
+      <Footer scrolltoAnchor={scrolltoAnchor} />
     </>
   );
 }
