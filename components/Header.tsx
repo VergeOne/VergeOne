@@ -18,14 +18,25 @@ const Header = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
         <h2 onClick={() => scrolltoAnchor("Kontakt")}>Kontakt</h2>
       </div>
       <div className="animate-fadeRight flex select-none gap-8 items-center absolute right-20">
-        <Image
-          src="/instagram.svg"
-          alt="Instagram-logo"
-          width={29}
-          height={29}
-        />
-        <Image src="/whatsapp.svg" alt="WhatsApp-logo" width={29} height={29} />
-        <Image src="/mail.svg" alt="E-Mail-Icon" width={32} height={32} />
+        <a href="https://instagram.com/verge-one">
+          <Image
+            src="/instagram.svg"
+            alt="Instagram-logo"
+            width={29}
+            height={29}
+          />
+        </a>
+        <a href="https://wha.me/verge-one">
+          <Image
+            src="/whatsapp.svg"
+            alt="WhatsApp-logo"
+            width={29}
+            height={29}
+          />{" "}
+        </a>
+        <a href="mailto:info@verge-one.com">
+          <Image src="/mail.svg" alt="E-Mail-Icon" width={32} height={32} />{" "}
+        </a>
       </div>
     </div>
   );

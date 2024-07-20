@@ -106,7 +106,7 @@ export default function Home() {
           >
             Unsere Mission
           </h2>
-          <p className="text-animate text-center text-2xl leading-10 tracking-[0.27em] w-[70%]">
+          <p className="text-animate text-center text-2xl leading-10 tracking-[0.20em] w-[70%]">
             Wir wissen wie wertvoll Ihre Zeit ist. Daher geben wir unser Bestes
             Ihnen davon so viel wie möglich einzusparen.
             <br />

@@ -18,7 +18,7 @@ const config: Config = {
         "blob-trans": {
           from: {
             opacity: "1",
-            transform: "translate(50%,80%)",
+            transform: "translate(50%,90%)",
           },
           to: {
             opacity: "0.1",
