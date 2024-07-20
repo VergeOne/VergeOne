@@ -15,7 +15,7 @@ const Header = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
         <h2 onClick={() => scrolltoAnchor("Kontakt")}>Kontakt</h2>
       </div>
       <div className="animate-fadeRight flex select-none gap-8 items-center absolute right-20">
-        <a target="_blank" href="https://instagram.com/verge-one">
+        <a target="_blank" href="https://instagram.com/_vergeone_">
           <Image
             src="/instagram.svg"
             alt="Instagram-logo"

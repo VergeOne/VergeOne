@@ -27,7 +27,7 @@
   - Lohnt sich ein eigener Web-Designer?
 
 ### Fragenkatalog:
-
+[Buisnessplan.md](Buisnessplan.md)
 - Haben Sie bereits Content(Texte, Slogans, Zitate etc)
 - Haben Sie Websites, die Ihnen gefallen, an denen Wir uns orientieren können?
 - Was soll das Ziel ihrer Website sein? Kundengewinnung? Verkauf? Information?

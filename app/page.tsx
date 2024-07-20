@@ -4,11 +4,18 @@ import Image from "next/image";
 import { Inter, Montserrat } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const monte = Montserrat({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], weight: ["200"] });
+
 export default function Home() {
+  const [cust, setcust] = useState(false);
+  const [auto, setauto] = useState(false);
+  const [db, setdb] = useState(false);
+  const [allg, setallg] = useState(false);
+  const [bera, setbera] = useState(false);
+  [];
   const [mailsucc, setMailsucc] = useState(false);
   const [mailfailed, setMailfailed] = useState(false);
   const scrolltoAnchor = (id: string) => {
@@ -22,6 +29,26 @@ export default function Home() {
       });
     } catch (e) {}
   };
+
+  async function sendMail() {
+    let res = await fetch("/api/sendMail", {
+      method: "Post",
+      body: JSON.stringify({
+        cust: cust,
+        auto: auto,
+        db: db,
+        allg: allg,
+        bera: bera,
+      }),
+    });
+    if (res.ok) {
+      setMailsucc(true);
+      setMailfailed(false);
+    } else {
+      setMailfailed(true);
+      setMailsucc(false);
+    }
+  }
   return (
     <>
       {/* Start First Page Wrapper */}
@@ -136,7 +163,7 @@ export default function Home() {
         <div id="Preise" className="offer">
           <h1>Automationen</h1>
           <div>
-            <p>- SSL-Verschlüsselung</p>
+            <p>- Zuverlässig</p>
             <p>- Mail-Automationen</p>
             <p>- Elimination repetitiver Aufgaben</p>
           </div>
@@ -147,8 +174,8 @@ export default function Home() {
         <div id="offer-mid" className="offer">
           <h1>Custom-Solutions</h1>
           <div>
-            <p>- SSL-Verschlüsselung</p>
-            <p>- Mail-Automationen</p>
+            <p>- maßgeschneiderte Web-anwendungen</p>
+            <p>- </p>
             <p>- Elimination repetitiver Aufgaben</p>
           </div>
           <h2>
@@ -158,9 +185,9 @@ export default function Home() {
         <div className="offer">
           <h1>Datenbanken</h1>
           <div>
-            <p>- SSL-Verschlüsselung</p>
-            <p>- Mail-Automationen</p>
-            <p>- Elimination repetitiver Aufgaben</p>
+            <p>- Einfache Verwaltung</p>
+            <p>- Sicheres Daten-Management</p>
+            <p>- Schnell und Speichereffizient</p>
           </div>
           <h2>
             <span>ab </span> 495€
@@ -181,7 +208,7 @@ export default function Home() {
       {/* Start Form Wrapper */}
       <div id="Kontakt" className={inter.className + " form"}>
         <div>
-          <p>Name</p>
+          <p>Vor-, Nachname</p>
           <input type="text" />
         </div>
         <div>
@@ -190,28 +217,82 @@ export default function Home() {
         </div>
         <div>
           <p>Ich bin interessiert an...</p>
-          <div className="h-12 flex gap-4 ">
-            <button className="py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60">
+          <div id="options" className="grid gap-4 grid-cols-3 *:grow   mt-2">
+            <button
+              onClick={() => {
+                setcust(!cust);
+              }}
+              className={
+                cust
+                  ? "offer-enabled"
+                  : "" +
+                    " py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60"
+              }
+            >
               Custom-Anwendung
             </button>
-            <button className="py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60">
+            <button
+              onClick={() => {
+                setauto(!auto);
+              }}
+              className={
+                auto
+                  ? "offer-enabled"
+                  : "" +
+                    " py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60"
+              }
+            >
               Automationen
             </button>
-            <button className="py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60">
+            <button
+              onClick={() => {
+                setdb(!db);
+              }}
+              className={
+                db
+                  ? "offer-enabled"
+                  : "" +
+                    " py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60"
+              }
+            >
               Datenbankanbindung
             </button>
-            <button className="py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60">
+            <button
+              onClick={() => {
+                setbera(!bera);
+              }}
+              className={
+                bera
+                  ? "offer-enabled"
+                  : "" +
+                    " py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60"
+              }
+            >
               Beratungsgespräch
             </button>
-            <button className="py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60">
+            <button
+              onClick={() => {
+                setallg(!allg);
+              }}
+              className={
+                allg
+                  ? "offer-enabled"
+                  : "" +
+                    " py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60"
+              }
+            >
               Allgemein
             </button>
           </div>
         </div>
         <div>
           <p>Nachricht</p>
-          <textarea />
+          <textarea cols={20} rows={45} />
         </div>
+        <button onClick={() => sendMail()}>
+          Senden{" "}
+          <Image alt="send icon" src="/send.svg" width={32} height={32} />
+        </button>
       </div>
       {/* End Form Wrapper */}
       <Footer scrolltoAnchor={scrolltoAnchor} />

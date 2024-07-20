@@ -107,7 +107,7 @@ body * {
 }
 
 .form {
-  @apply h-[40vh] flex flex-col items-center justify-center gap-8 w-full px-32 tracking-widest;
+  @apply h-[55vh] flex flex-col items-center justify-center gap-12 w-full px-32 tracking-widest;
 }
 .form input,
 .form textarea {
@@ -117,8 +117,11 @@ body * {
   @apply h-32 w-[50vw] py-2;
 }
 .form div p {
-  @apply font-thin tracking-[0.2em] text-lg;
+  @apply font-light tracking-[0.2em] text-lg;
 }
 .form > div {
   @apply flex gap-2 flex-col items-center;
+}
+.option-enabled {
+  @apply bg-gradient-to-br from-brand-dark/60 to-brand-dark/90;
 }
