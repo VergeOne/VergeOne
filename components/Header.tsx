@@ -32,7 +32,7 @@ const Header = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
           />{" "}
         </a>
         <a href="mailto:info@verge-one.com">
-          <Image src="/mail.svg" alt="E-Mail-Icon" width={32} height={32} />{" "}
+          <Image src="/mail.svg" alt="E-Mail-Icon" width={32} height={32} />
         </a>
       </div>
     </div>

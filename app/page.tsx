@@ -5,6 +5,8 @@ import { Inter, Montserrat } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useRef, useState } from "react";
+import clsx from "clsx";
+import { FaPaperPlane } from "react-icons/fa";
 
 const monte = Montserrat({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], weight: ["200"] });
@@ -159,7 +161,7 @@ export default function Home() {
       */}
       {/* End Customer Wrapper */}
       {/* Start Offer Wrapper */}
-      <div className="h-[50vh] text-animate px-24 flex items-center justify-between w-full gap-8 mt-24">
+      <div className="h-[50vh] text-animate-less px-24 flex items-center justify-between w-full gap-8 mt-24">
         <div id="Preise" className="offer">
           <h1>Automationen</h1>
           <div>
@@ -222,12 +224,7 @@ export default function Home() {
               onClick={() => {
                 setcust(!cust);
               }}
-              className={
-                cust
-                  ? "offer-enabled"
-                  : "" +
-                    " py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60"
-              }
+              className={cust ? "option-enabled" : "option-disabled"}
             >
               Custom-Anwendung
             </button>
@@ -235,12 +232,7 @@ export default function Home() {
               onClick={() => {
                 setauto(!auto);
               }}
-              className={
-                auto
-                  ? "offer-enabled"
-                  : "" +
-                    " py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60"
-              }
+              className={auto ? "option-enabled" : "option-disabled"}
             >
               Automationen
             </button>
@@ -250,7 +242,7 @@ export default function Home() {
               }}
               className={
                 db
-                  ? "offer-enabled"
+                  ? "option-enabled"
                   : "" +
                     " py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60"
               }
@@ -263,7 +255,7 @@ export default function Home() {
               }}
               className={
                 bera
-                  ? "offer-enabled"
+                  ? "option-enabled"
                   : "" +
                     " py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60"
               }
@@ -276,7 +268,7 @@ export default function Home() {
               }}
               className={
                 allg
-                  ? "offer-enabled"
+                  ? "option-enabled"
                   : "" +
                     " py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60"
               }
@@ -289,9 +281,11 @@ export default function Home() {
           <p>Nachricht</p>
           <textarea cols={20} rows={45} />
         </div>
-        <button onClick={() => sendMail()}>
-          Senden{" "}
-          <Image alt="send icon" src="/send.svg" width={32} height={32} />
+        <button
+          onClick={() => sendMail()}
+          className="flex items-center  z-10 gap-2 border-solid rounded-full border-[1px] border-white tracking-[0.2em] text-xl font-normal py-2 px-9"
+        >
+          Senden <FaPaperPlane />
         </button>
       </div>
       {/* End Form Wrapper */}

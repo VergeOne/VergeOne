@@ -123,5 +123,8 @@ body * {
   @apply flex gap-2 flex-col items-center;
 }
 .option-enabled {
-  @apply bg-gradient-to-br from-brand-dark/60 to-brand-dark/90;
+  @apply py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60 bg-gradient-to-br from-gray-200/50 to-gray-200/20;
+}
+.option-disabled {
+  @apply py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60;
 }
