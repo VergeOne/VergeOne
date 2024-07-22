@@ -1,10 +1,17 @@
+import { NextFont } from "next/dist/compiled/@next/font";
 import Image from "next/image";
 import Link from "next/link";
 
-const Footer = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
+const Footer = ({
+  scrolltoAnchor,
+  inter,
+}: {
+  scrolltoAnchor: any;
+  inter: NextFont;
+}) => {
   return (
-    <div className="*:hover:cursor-pointer h-[20vh] w-full flex items-center justify-between px-24 relative text-white tracking-[0.25em]">
-      <div className="flex flex-col gap-2">
+    <div className="*:hover:cursor-pointer h-[20vh] w-full flex items-center px-24 relative text-white tracking-[0.25em]">
+      <div className="flex flex-col items-center gap-2">
         <Image
           onClick={() => scrolltoAnchor("Home")}
           src="/logo.svg"
@@ -14,7 +21,14 @@ const Footer = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
         />
         <h2 onClick={() => scrolltoAnchor("Home")}>Verge-One</h2>
       </div>
-      <div></div>
+      <div
+        className={
+          inter.className + " flex gap-7 absolute left-1/2 -translate-x-1/2"
+        }
+      >
+        <Link href="/impressum">Impressum</Link>
+        <Link href="/datenschutzerklärung">Datenschutzerklärung</Link>
+      </div>
       <div></div>
     </div>
   );

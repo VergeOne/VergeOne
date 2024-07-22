@@ -57,8 +57,6 @@ body * {
 .offer {
   @apply relative h-full w-1/3 border-solid border-brand-whiteish rounded-3xl p-10 flex gap-8 flex-col items-center justify-between text-white;
 }
-.offer:nth-child(2) {
-}
 .offer h1 {
   @apply text-3xl tracking-[0.2em];
 }
@@ -69,7 +67,7 @@ body * {
   @apply text-sm tracking-wider mr-0.5;
 }
 .offer div {
-  @apply flex flex-col gap-4 tracking-widest;
+  @apply flex flex-col justify-between tracking-widest;
 }
 .offer div p {
   @apply text-lg;
@@ -107,7 +105,7 @@ body * {
 }
 
 .form {
-  @apply h-[55vh] flex flex-col items-center justify-center gap-12 w-full px-32 tracking-widest;
+  @apply flex flex-col items-center justify-center gap-12 w-full px-32 tracking-widest;
 }
 .form input,
 .form textarea {
@@ -123,8 +121,48 @@ body * {
   @apply flex gap-2 flex-col items-center;
 }
 .option-enabled {
-  @apply py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60 bg-gradient-to-br from-gray-200/50 to-gray-200/20;
+  @apply relative border-gradient py-2 px-8 text-lg rounded-full bg-gradient-to-br from-gray-200/50 to-gray-200/20;
+}
+
+.option-enabled::before {
+  @apply bg-brand-dark rounded-full;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+}
+
+.border-gradient {
+  border: 2px solid transparent;
+  background: linear-gradient(to right, rgb(34, 34, 34), rgb(34, 34, 34)),
+    linear-gradient(
+      to bottom right,
+      rgb(255 128 11 / 0.6),
+      rgb(250 255 0 / 0.6)
+    );
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
 }
 .option-disabled {
   @apply py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60;
+}
+
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  animation: spin 2s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

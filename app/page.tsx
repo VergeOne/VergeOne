@@ -6,10 +6,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useRef, useState } from "react";
 import clsx from "clsx";
-import { FaPaperPlane } from "react-icons/fa";
+import { FaCheckCircle, FaPaperPlane } from "react-icons/fa";
 
 const monte = Montserrat({ subsets: ["latin"] });
-const inter = Inter({ subsets: ["latin"], weight: ["200"] });
+const inter = Inter({ subsets: ["latin"], weight: ["300"] });
 
 export default function Home() {
   const [cust, setcust] = useState(false);
@@ -19,6 +19,7 @@ export default function Home() {
   const [bera, setbera] = useState(false);
   [];
   const [mailsucc, setMailsucc] = useState(false);
+  const [mailpending, setMailpending] = useState(false);
   const [mailfailed, setMailfailed] = useState(false);
   const scrolltoAnchor = (id: string) => {
     try {
@@ -26,13 +27,14 @@ export default function Home() {
         document!.getElementById(id)!.getBoundingClientRect().top +
         window.scrollY;
       window.scroll({
-        top: y,
+        top: y - 150,
         behavior: "smooth",
       });
     } catch (e) {}
   };
 
   async function sendMail() {
+    setMailpending(true);
     let res = await fetch("/api/sendMail", {
       method: "Post",
       body: JSON.stringify({
@@ -50,6 +52,7 @@ export default function Home() {
       setMailfailed(true);
       setMailsucc(false);
     }
+    setMailpending(false);
   }
   return (
     <>
@@ -77,7 +80,7 @@ export default function Home() {
               onClick={() => {
                 scrolltoAnchor("Kontakt");
               }}
-              className="border-solid rounded-full border-[1px] border-white tracking-[0.25em] text-xl font-normal py-2 px-9"
+              className="border-solid rounded-full border-[2px] mt-2 border-white tracking-[0.25em] text-xl font-normal py-2 px-9"
             >
               Kontakt
             </button>
@@ -196,7 +199,7 @@ export default function Home() {
           </h2>
         </div>
       </div>
-      <div className="h-[40vh] flex items-center justify-center">
+      <div className="flex py-20 items-center justify-center">
         <button
           onClick={() => {
             scrolltoAnchor("Kontakt");
@@ -283,13 +286,40 @@ export default function Home() {
         </div>
         <button
           onClick={() => sendMail()}
-          className="flex items-center  z-10 gap-2 border-solid rounded-full border-[1px] border-white tracking-[0.2em] text-xl font-normal py-2 px-9"
+          className={
+            "flex items-center z-10 gap-2 border-solid rounded-full border-[1px] border-white tracking-[0.2em] text-xl font-normal py-2" +
+              mailsucc || mailpending
+              ? "px-14"
+              : "px-9"
+          }
         >
-          Senden <FaPaperPlane />
+          {mailsucc ? (
+            <FaCheckCircle className="w-7 h-7" width={28} height={28} />
+          ) : !mailpending ? (
+            <>
+              Senden <FaPaperPlane />
+            </>
+          ) : (
+            <div className="spinner" />
+          )}
         </button>
+        {mailsucc ? (
+          <div className="bg-green-300/50 flex justify-center items-center rounded-xl w-1/2 h-14 ">
+            Nachricht erfolgreich versendet!
+          </div>
+        ) : (
+          <></>
+        )}
+        {mailfailed ? (
+          <div className="bg-red-300/50 flex justify-center items-center rounded-xl w-1/2 h-14 ">
+            Senden fehlgeschlagen!
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
       {/* End Form Wrapper */}
-      <Footer scrolltoAnchor={scrolltoAnchor} />
+      <Footer inter={inter} scrolltoAnchor={scrolltoAnchor} />
     </>
   );
 }
