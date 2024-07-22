@@ -12,6 +12,9 @@ const monte = Montserrat({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], weight: ["300"] });
 
 export default function Home() {
+  const [formname, setformname] = useState("");
+  const [formemail, setformemail] = useState("");
+  const [formmessage, setformmessage] = useState("");
   const [cust, setcust] = useState(false);
   const [auto, setauto] = useState(false);
   const [db, setdb] = useState(false);
@@ -38,11 +41,16 @@ export default function Home() {
     let res = await fetch("/api/sendMail", {
       method: "Post",
       body: JSON.stringify({
-        cust: cust,
-        auto: auto,
-        db: db,
-        allg: allg,
-        bera: bera,
+        name: formname,
+        email: formemail,
+        options: [
+          { name: "Custom-Solution", value: cust },
+          { name: "Automation", value: auto },
+          { name: "Datenbank", value: db },
+          { name: "Allgemein", value: allg },
+          { name: "Beratung", value: bera },
+        ],
+        message: formmessage,
       }),
     });
     if (res.ok) {
@@ -199,7 +207,7 @@ export default function Home() {
           </h2>
         </div>
       </div>
-      <div className="flex py-20 items-center justify-center">
+      <div className="flex py-24 items-center justify-center">
         <button
           onClick={() => {
             scrolltoAnchor("Kontakt");
@@ -214,11 +222,21 @@ export default function Home() {
       <div id="Kontakt" className={inter.className + " form"}>
         <div>
           <p>Vor-, Nachname</p>
-          <input type="text" />
+          <input
+            type="text"
+            onChange={(e) => {
+              setformname(e.target.value);
+            }}
+          />
         </div>
         <div>
           <p className=" font">Email</p>
-          <input type="email" />
+          <input
+            type="email"
+            onChange={(e) => {
+              setformemail(e.target.value);
+            }}
+          />
         </div>
         <div>
           <p>Ich bin interessiert an...</p>
@@ -282,15 +300,19 @@ export default function Home() {
         </div>
         <div>
           <p>Nachricht</p>
-          <textarea cols={20} rows={45} />
+          <textarea
+            cols={20}
+            rows={45}
+            onChange={(e) => {
+              setformmessage(e.target.value);
+            }}
+          />
         </div>
         <button
           onClick={() => sendMail()}
           className={
-            "flex items-center z-10 gap-2 border-solid rounded-full border-[1px] border-white tracking-[0.2em] text-xl font-normal py-2" +
-              mailsucc || mailpending
-              ? "px-14"
-              : "px-9"
+            "flex items-center z-10 gap-2 border-solid rounded-full border-2 border-white tracking-[0.2em] text-xl font-normal py-2 " +
+            (mailsucc || mailpending ? " px-14" : " px-9")
           }
         >
           {mailsucc ? (

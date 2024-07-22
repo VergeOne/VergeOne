@@ -10,7 +10,7 @@ const Footer = ({
   inter: NextFont;
 }) => {
   return (
-    <div className="*:hover:cursor-pointer h-[20vh] w-full flex items-center px-24 relative text-white tracking-[0.25em]">
+    <div className="*:hover:cursor-pointer h-[20vh] mt-24 w-full flex items-center px-24 relative text-white tracking-[0.25em]">
       <div className="flex flex-col items-center gap-2">
         <Image
           onClick={() => scrolltoAnchor("Home")}
