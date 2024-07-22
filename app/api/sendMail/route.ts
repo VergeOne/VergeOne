@@ -18,8 +18,11 @@ export async function POST(req: NextRequest) {
       to: email, // list of receivers
       subject: "Neue Nachricht von " + name, // Subject line // plain text body
       html: `Optionen:${options
-        .map((opt: { name: string; value: string }) => {
-          return opt.name + ": " + opt.value;
+        .filter((opt: { name: string; value: string }) => {
+          return opt.value;
+        })
+        .map((item: { name: string; value: string }) => {
+          return item.name;
         })
         .join(", ")} <br/> Nachricht: ${message}`, // html body
     });
