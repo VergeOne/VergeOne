@@ -7,9 +7,12 @@ import Footer from "@/components/Footer";
 import { useRef, useState } from "react";
 import clsx from "clsx";
 import { FaCheckCircle, FaPaperPlane } from "react-icons/fa";
+import { CgClose } from "react-icons/cg";
 
 const monte = Montserrat({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], weight: ["300"] });
+const emailregex =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default function Home() {
   const [formname, setformname] = useState("");
@@ -20,7 +23,7 @@ export default function Home() {
   const [db, setdb] = useState(false);
   const [allg, setallg] = useState(false);
   const [bera, setbera] = useState(false);
-  [];
+  const [missing, setmissing] = useState(false);
   const [mailsucc, setMailsucc] = useState(false);
   const [mailpending, setMailpending] = useState(false);
   const [mailfailed, setMailfailed] = useState(false);
@@ -35,8 +38,43 @@ export default function Home() {
       });
     } catch (e) {}
   };
-
+  function check_correct(
+    elem: any,
+    name: string,
+    type: "text" | "email" | "options"
+  ) {
+    let correct = true;
+    if (type === "email") if (!emailregex.test(elem)) correct = false;
+    if (type === "options") {
+      let foundone = false;
+      for (let i = 0; i < elem.length; i++) {
+        if (elem[i]) {
+          foundone = true;
+          break;
+        }
+      }
+      correct = foundone;
+    } else if (elem == "" || elem.length == 0) correct = false;
+    document.getElementById(name)!.style.border = correct
+      ? "rgb(229 231 235)"
+      : "2px solid red";
+    return correct;
+  }
   async function sendMail() {
+    check_correct(formname, "formname", "text");
+    check_correct(formemail, "formemail", "email");
+    check_correct([cust, auto, db, allg, bera], "formoptions", "options");
+    if (
+      !(
+        check_correct(formname, "formname", "text") &&
+        check_correct(formemail, "formemail", "email") &&
+        check_correct([cust, auto, db, allg, bera], "formoptions", "options")
+      )
+    ) {
+      setmissing(true);
+      return;
+    }
+    setmissing(false);
     setMailpending(true);
     let res = await fetch("/api/sendMail", {
       method: "Post",
@@ -62,6 +100,7 @@ export default function Home() {
     }
     setMailpending(false);
   }
+
   return (
     <>
       {/* Start First Page Wrapper */}
@@ -223,6 +262,7 @@ export default function Home() {
         <div>
           <p>Vor-, Nachname</p>
           <input
+            id="formname"
             type="text"
             onChange={(e) => {
               setformname(e.target.value);
@@ -232,6 +272,7 @@ export default function Home() {
         <div>
           <p className=" font">Email</p>
           <input
+            id="formemail"
             type="email"
             onChange={(e) => {
               setformemail(e.target.value);
@@ -240,7 +281,10 @@ export default function Home() {
         </div>
         <div>
           <p>Ich bin interessiert an...</p>
-          <div id="options" className="grid gap-4 grid-cols-3 *:grow   mt-2">
+          <div
+            id="formoptions"
+            className="grid gap-4 grid-cols-3 *:grow rounded-2xl p-3 mt-2"
+          >
             <button
               onClick={() => {
                 setcust(!cust);
@@ -261,12 +305,7 @@ export default function Home() {
               onClick={() => {
                 setdb(!db);
               }}
-              className={
-                db
-                  ? "option-enabled"
-                  : "" +
-                    " py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60"
-              }
+              className={db ? "option-enabled" : "option-disabled"}
             >
               Datenbankanbindung
             </button>
@@ -274,12 +313,7 @@ export default function Home() {
               onClick={() => {
                 setbera(!bera);
               }}
-              className={
-                bera
-                  ? "option-enabled"
-                  : "" +
-                    " py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60"
-              }
+              className={bera ? "option-enabled" : "option-disabled"}
             >
               Beratungsgespräch
             </button>
@@ -287,12 +321,7 @@ export default function Home() {
               onClick={() => {
                 setallg(!allg);
               }}
-              className={
-                allg
-                  ? "option-enabled"
-                  : "" +
-                    " py-2 px-8 text-lg rounded-full border-2 border-solid border-gray-300/60"
-              }
+              className={allg ? "option-enabled" : "option-disabled"}
             >
               Allgemein
             </button>
@@ -309,7 +338,9 @@ export default function Home() {
           />
         </div>
         <button
-          onClick={() => sendMail()}
+          onClick={() => {
+            if (!mailfailed && !mailsucc) sendMail();
+          }}
           className={
             "flex items-center z-10 gap-2 border-solid rounded-full border-2 border-white tracking-[0.2em] text-xl font-normal py-2 " +
             (mailsucc || mailpending ? " px-14" : " px-9")
@@ -318,9 +349,13 @@ export default function Home() {
           {mailsucc ? (
             <FaCheckCircle className="w-7 h-7" width={28} height={28} />
           ) : !mailpending ? (
-            <>
-              Senden <FaPaperPlane />
-            </>
+            !mailfailed ? (
+              <>
+                Senden <FaPaperPlane />
+              </>
+            ) : (
+              <CgClose className="w-7 h-7" width={28} height={28} />
+            )
           ) : (
             <div className="spinner" />
           )}
@@ -334,7 +369,14 @@ export default function Home() {
         )}
         {mailfailed ? (
           <div className="bg-red-300/50 flex justify-center items-center rounded-xl w-1/2 h-14 ">
-            Senden fehlgeschlagen!
+            Senden fehlgeschlagen! Versuche es bitte später erneut.
+          </div>
+        ) : (
+          <></>
+        )}
+        {missing ? (
+          <div className="bg-orange-300/50 flex justify-center items-center rounded-xl w-1/2 h-14 ">
+            Bitte alle Felder ausfüllen!
           </div>
         ) : (
           <></>
