@@ -172,8 +172,20 @@ export default function Home() {
       */}
       {/* End Customer Wrapper */}
       {/* Start Offer Wrapper */}
-      <div className="h-[50vh] text-animate-less px-24 flex items-center justify-between w-full gap-8 mt-24">
-        <div id="Preise" className="offer">
+      <h2
+        className={
+          monte.className +
+          " text-animate text-center mt-[40vh] text-[60px] font-medium tracking-[0.25em]"
+        }
+      >
+        Unsere Preise
+      </h2>
+      <p>Wir wollen immer transparent mit Ihnen bleiben. Daher finden </p>
+      <div
+        id="Preise"
+        className="h-[50vh] text-animate-less px-24 flex items-center justify-between w-full gap-8 mt-24"
+      >
+        <div className="offer">
           <h1>Automationen</h1>
           <div>
             <p>- Zuverlässig</p>
@@ -181,7 +193,7 @@ export default function Home() {
             <p>- Elimination repetitiver Aufgaben</p>
           </div>
           <h2>
-            <span>ab </span> 245€
+            <span>ab </span> 1.495€
           </h2>
         </div>
         <div id="offer-mid" className="offer">
@@ -192,7 +204,7 @@ export default function Home() {
             <p>- Elimination repetitiver Aufgaben</p>
           </div>
           <h2>
-            <span>ab </span> 995€
+            <span>ab </span> 2.495€
           </h2>
         </div>
         <div className="offer">
@@ -203,7 +215,7 @@ export default function Home() {
             <p>- Schnell und Speichereffizient</p>
           </div>
           <h2>
-            <span>ab </span> 495€
+            <span>ab </span> 1.895€
           </h2>
         </div>
       </div>

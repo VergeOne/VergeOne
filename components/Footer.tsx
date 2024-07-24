@@ -23,7 +23,7 @@ const Footer = ({
       </div>
       <div
         className={
-          inter.className + " flex gap-7 absolute left-1/2 -translate-x-1/2"
+          inter.className + " flex gap-12 absolute left-1/2 -translate-x-1/2"
         }
       >
         <Link href="/impressum">Impressum</Link>

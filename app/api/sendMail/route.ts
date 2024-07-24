@@ -13,9 +13,9 @@ export async function POST(req: NextRequest) {
       },
     });
     const { name, email, options, message } = await req.json();
-    const info = await transporter.sendMail({
+    await transporter.sendMail({
       from: "Verge-One", // sender address
-      to: email, // list of receivers
+      to: "info@verge-one.com", // list of receivers
       subject: "Neue Nachricht von " + name, // Subject line // plain text body
       html: `Optionen:${options
         .filter((opt: { name: string; value: string }) => {
@@ -24,9 +24,14 @@ export async function POST(req: NextRequest) {
         .map((item: { name: string; value: string }) => {
           return item.name;
         })
-        .join(", ")} <br/> Nachricht: ${message}`, // html body
+        .join(", <br />")} <br/> Nachricht: ${message}`, // html body
     });
-    console.log("Message sent: %s", info.messageId);
+    await transporter.sendMail({
+      from: "Verge-One",
+      to: email,
+      subject: "Vielen Dank für Ihre Nachricht",
+      html: `Hallo ${name}, <br /><br /><strong>Vielen Dank für Ihre Nachricht!</strong> <br/>Wir werden uns so bald wie möglich an Sie wenden.`,
+    });
     return new NextResponse("success", { status: 200 });
   } catch (e: any) {
     return new NextResponse(e.toString(), { status: 403 });
