@@ -1,4 +1,0 @@
-# Copy
-
-## Lange Beschreibung
-

@@ -34,6 +34,6 @@ export async function POST(req: NextRequest) {
     });
     return new NextResponse("success", { status: 200 });
   } catch (e: any) {
-    return new NextResponse(e.toString(), { status: 403 });
+    return new NextResponse(e.toString(), { status: 500 });
   }
 }
