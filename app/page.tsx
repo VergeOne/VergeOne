@@ -41,7 +41,7 @@ export default function Home() {
   function check_correct(
     elem: any,
     name: string,
-    type: "text" | "email" | "options"
+    type: "text" | "email" | "options",
   ) {
     let correct = true;
     if (type === "email") if (!emailregex.test(elem)) correct = false;
@@ -190,16 +190,13 @@ export default function Home() {
           >
             Unsere Mission
           </h2>
-          <p className="text-animate text-center text-2xl leading-10 tracking-[0.20em] w-[70%]">
-            Wir wissen wie wertvoll Ihre Zeit ist. Daher geben wir unser Bestes
-            Ihnen davon so viel wie möglich einzusparen.
-            <br />
-            <br />
-            Wir bieten Ihnen maßgeschneiderte Anwendungen nach ihren Belieben.
-            Kein Kaufen und Ärgern über fehlende Funktionen mehr.
-            <br />
-            <br />
-            Sagen Sie uns einfach was Sie brauchen und wir setzten es um.
+          <p className="text-animate text-center text-2xl mt-5 leading-[2.75rem] tracking-[0.18em] w-[70%]">
+            Bei Verge-One spezialisieren wir uns auf die Automatisierung
+            repetitiver Aufgaben, um Ihrem Unternehmen Zeit und Geld zu sparen.
+            Durch maßgeschneiderte Anwendungen und Datenbankintegration sorgen
+            wir dafür, dass Ihre Abläufe effizienter und kostengünstiger werden.
+            Unsere Lösungen senken nicht nur die Kosten, sondern eliminieren
+            auch Fehler, die durch manuelle Handhabung entstehen.
           </p>
         </div>
         {/* End Mission Content Wrapper */}
@@ -211,15 +208,24 @@ export default function Home() {
       */}
       {/* End Customer Wrapper */}
       {/* Start Offer Wrapper */}
-      <h2
-        className={
-          monte.className +
-          " text-animate text-center mt-[40vh] text-[60px] font-medium tracking-[0.25em]"
-        }
-      >
-        Unsere Preise
-      </h2>
-      <p>Wir wollen immer transparent mit Ihnen bleiben. Daher finden </p>
+      <div className="flex items-center justify-center flex-col">
+        <h2
+          className={
+            monte.className +
+            " text-animate text-center mt-[40vh] text-[60px] font-medium tracking-[0.25em]"
+          }
+        >
+          Unsere Preise
+        </h2>
+        <p className="text-animate text-center text-2xl mt-5 leading-[2.75rem] tracking-[0.18em] w-[70%]">
+          Um transparent mit Ihnen zu bleiben finden sie hier unsere Preise.
+          <br />
+          Diese sind Richtwerte.
+          <br /> Für eine genauere Preisabschätzung, kontaktieren Sie uns oder
+          vereinbaren Sie ein kostenloses Beratungsgespräch
+        </p>
+      </div>
+      {/* Start Offers */}
       <div
         id="Preise"
         className="h-[50vh] text-animate-less px-24 flex items-center justify-between w-full gap-8 mt-24"
