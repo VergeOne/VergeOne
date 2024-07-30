@@ -179,9 +179,9 @@ export default function Home() {
       </div>
       {/* End Scroll-animation Wrapper */}
       {/* Start Mission Wrapper */}
-      <div className="h-[60vh] flex items-center justify-center">
+      <div className="h-[60vh] flex flex-col items-center justify-center ">
         {/* Start Mission Content Wrapper */}
-        <div className="flex flex-col gap-8 items-center justify-center">
+        <div className="flex flex-col gap-8 items-center justify-center w-full">
           <h2
             className={
               monte.className +
@@ -198,6 +198,27 @@ export default function Home() {
             Unsere Lösungen senken nicht nur die Kosten, sondern eliminieren
             auch Fehler, die durch manuelle Handhabung entstehen.
           </p>
+        </div>
+        <div className="flex flex-col gap-8 items-center justify-center mt-80 w-full">
+          <h2
+            className={
+              monte.className +
+              " text-animate text-[52px] font-medium tracking-[0.25em]"
+            }
+          >
+            Alle Vorteile auf einen Blick
+          </h2>
+          <div className="grid grid-cols-3 gap-x-5 w-[80%] bg-gray-200/70 backdrop-blur-md rounded-3xl px-10 py-5">
+            <div className="flex flex-col gap-2 items-center justify-center">
+              <h3>Zentrale Datenverwaltung</h3>
+              <p className="text-center text-xl mt-5 leading-[2rem] tracking-[0.2em]">
+                Verabschieden Sie sich von verstreuten Excel-Dateien und
+                inkonsistenten Daten. Mit unserer zentralen Datenverwaltung
+                werden alle Ihre Informationen sicher an einem Ort gespeichert
+                und sind leicht zugänglich und verwaltbar.
+              </p>
+            </div>
+          </div>
         </div>
         {/* End Mission Content Wrapper */}
       </div>
@@ -282,6 +303,7 @@ export default function Home() {
           <input
             id="formname"
             type="text"
+            name="name"
             onChange={(e) => {
               setformname(e.target.value);
             }}
@@ -292,6 +314,7 @@ export default function Home() {
           <input
             id="formemail"
             type="email"
+            name="email"
             onChange={(e) => {
               setformemail(e.target.value);
             }}

@@ -10,7 +10,41 @@ body * {
   cursor: pointer;
 }
 .links {
+  padding: 15px 50px;
+  border-radius: 99999999px;
   z-index: 10;
+}
+@supports (animation-timeline: scroll()) {
+  .header-animate {
+    position: fixed;
+    animation: header-expand linear forwards;
+    animation-timeline: scroll();
+  }
+}
+
+@keyframes header-expand {
+  0% {
+    background-color: transparent;
+    width: 45%;
+    top: 7vh;
+    transform: translate(-50%, -50%);
+  }
+  10% {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    width: 75%;
+    transform: translate(-50%, 0);
+    top: 10px;
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    width: 75%;
+    transform: translate(-50%, 0);
+    top: 10px;
+  }
 }
 
 @keyframes fade-view {
@@ -41,17 +75,18 @@ body * {
     opacity: 0;
   }
 }
+@supports (animation-timeline: view()) {
+  .text-animate {
+    opacity: 0;
+    animation: fade-view forwards linear;
+    animation-timeline: view();
+  }
 
-.text-animate {
-  opacity: 0;
-  animation: fade-view forwards linear;
-  animation-timeline: view();
-}
-
-.text-animate-less {
-  opacity: 0;
-  animation: fade-view-less forwards linear;
-  animation-timeline: view();
+  .text-animate-less {
+    opacity: 0;
+    animation: fade-view-less forwards linear;
+    animation-timeline: view();
+  }
 }
 
 .offer {
