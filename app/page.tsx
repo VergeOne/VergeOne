@@ -179,7 +179,7 @@ export default function Home() {
       </div>
       {/* End Scroll-animation Wrapper */}
       {/* Start Mission Wrapper */}
-      <div className="h-[60vh] flex flex-col items-center justify-center ">
+      <div className=" flex flex-col items-center justify-center ">
         {/* Start Mission Content Wrapper */}
         <div className="flex flex-col gap-8 items-center justify-center w-full">
           <h2
@@ -208,14 +208,48 @@ export default function Home() {
           >
             Alle Vorteile auf einen Blick
           </h2>
-          <div className="grid grid-cols-3 gap-x-5 w-[80%] bg-gray-200/70 backdrop-blur-md rounded-3xl px-10 py-5">
-            <div className="flex flex-col gap-2 items-center justify-center">
-              <h3>Zentrale Datenverwaltung</h3>
-              <p className="text-center text-xl mt-5 leading-[2rem] tracking-[0.2em]">
+          <div className="grid grid-cols-5 gap-x-4 gap-y-4 w-[85%] backdrop-blur-md rounded-3xl font-light">
+            <div className="flex flex-col col-span-2 gap-2 text-center rounded-xl bg-gray-200/15 items-center justify-center tracking-[0.2em] px-9 py-7">
+              <h3 className={monte.className + " font-normal text-3xl"}>
+                Zentrale Datenverwaltung
+              </h3>
+              <p className="text-center text-lg leading-[2rem] tracking-[0.12em]">
                 Verabschieden Sie sich von verstreuten Excel-Dateien und
                 inkonsistenten Daten. Mit unserer zentralen Datenverwaltung
                 werden alle Ihre Informationen sicher an einem Ort gespeichert
                 und sind leicht zugänglich und verwaltbar.
+              </p>
+            </div>
+            <div className="flex flex-col gap-2 text-center rounded-xl col-span-3 bg-gray-200/25 items-center justify-start tracking-[0.2em] px-9 py-7">
+              <h3 className={monte.className + " font-normal text-3xl"}>
+                Datenintegrität
+              </h3>
+              <p className="text-center text-lg leading-[2rem] tracking-[0.12em]">
+                Manuelle Dateneingabe kann zu Fehlern führen. Unsere
+                automatisierten Lösungen gewährleisten die Genauigkeit und
+                Integrität der Daten, reduzieren das Risiko von Fehlern und
+                sorgen für verlässliche Informationen.
+              </p>
+            </div>
+            <div className="flex flex-col gap-2 text-center rounded-xl col-span-3 bg-gray-200/25 items-center justify-start tracking-[0.2em] px-9 py-7">
+              <h3 className={monte.className + " font-normal text-3xl"}>
+                Kosteneffizienz
+              </h3>
+              <p className="text-center text-lg leading-[2rem] tracking-[0.12em]">
+                Unser wettbewerbsfähiger Preis stellt sicher, dass Sie den
+                besten Wert für Ihre Investition erhalten und hochwertige
+                Automatisierungslösungen für Ihr Unternehmen zugänglich machen.
+              </p>
+            </div>
+            <div className="flex flex-col col-span-2 gap-3 text-center rounded-xl bg-gray-200/15 items-center justify-center tracking-[0.2em] px-9 py-7">
+              <h3 className={monte.className + " font-normal text-3xl"}>
+                Zeitersparnis
+              </h3>
+              <p className="text-center text-lg leading-[2rem] tracking-[0.12em]">
+                Durch vollständig optimierte Automatisierung werden Ihre
+                Arbeitsabläufe gestrafft, was wertvolle Zeit spart und Ihrem
+                Team ermöglicht, sich auf strategischere Aufgaben zu
+                konzentrieren.
               </p>
             </div>
           </div>

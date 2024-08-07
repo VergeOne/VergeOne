@@ -10,7 +10,7 @@ body * {
   cursor: pointer;
 }
 .links {
-  padding: 15px 50px;
+  padding: 10px 50px;
   border-radius: 99999999px;
   z-index: 10;
 }
