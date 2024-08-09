@@ -17,20 +17,20 @@ export async function POST(req: NextRequest) {
       from: "Verge-One", // sender address
       to: "info@verge-one.com", // list of receivers
       subject: "Neue Nachricht von " + name, // Subject line // plain text body
-      html: `Optionen:${options
+      html: `Name: ${name} <br /><br />Email: ${email}<br /><br />Optionen:<br /><br />${options
         .filter((opt: { name: string; value: string }) => {
           return opt.value;
         })
         .map((item: { name: string; value: string }) => {
           return item.name;
         })
-        .join(", <br />")} <br/> Nachricht: ${message}`, // html body
+        .join(", ")} <br/><br /> Nachricht: ${message}`, // html body
     });
     await transporter.sendMail({
       from: "Verge-One",
       to: email,
       subject: "Vielen Dank für Ihre Nachricht",
-      html: `Hallo ${name}, <br /><br /><strong>Vielen Dank für Ihre Nachricht!</strong> <br/>Wir werden uns so bald wie möglich an Sie wenden.`,
+      html: `Hallo ${name}, <br /><br /><strong>Vielen Dank für Ihre Nachricht!</strong> <br/>Wir werden uns so bald wie möglich bei Ihnen melden. <br /><br /> Schönen Tag und liebe Grüße,<br />Ihr Verge-One Team <br /><br />`,
     });
     return new NextResponse("success", { status: 200 });
   } catch (e: any) {

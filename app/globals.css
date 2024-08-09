@@ -90,7 +90,7 @@ body * {
 }
 
 .offer {
-  @apply relative h-full w-1/3 border-solid border-brand-whiteish rounded-3xl py-12 px-12 flex gap-8 flex-col justify-between text-white;
+  @apply relative h-[25rem] w-1/3 border-solid border-brand-whiteish rounded-3xl py-12 px-12 flex gap-8 flex-col justify-between text-white;
 }
 .offer:nth-child(2) {
 }
