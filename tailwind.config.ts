@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-
+const defaultTheme = require("tailwindcss/defaultTheme");
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,6 +7,11 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      xxs: "350px",
+      xs: "475px",
+      ...defaultTheme.screens,
+    },
     extend: {
       colors: {
         "brand-dark": "#222222",
@@ -63,6 +68,16 @@ const config: Config = {
             transform: "translate(0, 0)",
           },
         },
+        fadeRight_sm: {
+          from: {
+            transform: "translate(60vw ,0)",
+            opacity: "0",
+          },
+          to: {
+            opacity: "1",
+            transform: "translate(50%, 0)",
+          },
+        },
       },
       animation: {
         "blob-trans": "blob-trans linear forwards",
@@ -74,5 +89,10 @@ const config: Config = {
     },
   },
   plugins: [],
+  variants: {
+    extend: {
+      animation: ["responsive"],
+    },
+  },
 };
 export default config;

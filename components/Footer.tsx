@@ -18,6 +18,7 @@ const Footer = ({
           alt="Logo"
           width={65}
           height={62}
+          className="select-none xl:w-14 xl:h-14 2xl:w-16 2xl:h-16"
         />
         <h2 onClick={() => scrolltoAnchor("Home")}>Verge-One</h2>
       </div>

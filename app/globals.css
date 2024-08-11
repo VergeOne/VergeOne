@@ -10,30 +10,35 @@ body * {
   cursor: pointer;
 }
 .links {
-  padding: 10px 50px;
+  @apply py-1.5 px-11 2xl:py-2 2xl:px-12;
   border-radius: 99999999px;
   z-index: 10;
 }
 @supports (animation-timeline: scroll()) {
-  .header-animate {
+  .header-animate-xl {
     position: fixed;
-    animation: header-expand linear forwards;
+    animation: header-expand-xl linear forwards;
+    animation-timeline: scroll();
+  }
+  .header-animate-lg {
+    position: fixed;
+    animation: header-expand-lg linear forwards;
     animation-timeline: scroll();
   }
 }
 
-@keyframes header-expand {
+@keyframes header-expand-xl {
   0% {
-    background-color: transparent;
     width: 45%;
+    background-color: transparent;
     top: 7vh;
     transform: translate(-50%, -50%);
   }
-  10% {
+  15% {
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(4px);
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
-    width: 75%;
+    width: 75% !important;
     transform: translate(-50%, 0);
     top: 10px;
   }
@@ -41,7 +46,31 @@ body * {
     background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(4px);
-    width: 75%;
+    width: 75% !important;
+    transform: translate(-50%, 0);
+    top: 10px;
+  }
+}
+@keyframes header-expand-lg {
+  0% {
+    width: 60% !important;
+    background-color: transparent;
+    top: 7vh;
+    transform: translate(-50%, -50%);
+  }
+  15% {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    width: 85%;
+    transform: translate(-50%, 0);
+    top: 10px;
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    width: 85%;
     transform: translate(-50%, 0);
     top: 10px;
   }
@@ -202,4 +231,11 @@ body * {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.vorteil-desc {
+  @apply text-center  2xl:text-lg xl:leading-[1.5rem] 2xl:leading-[2rem] xl:tracking-widest 2xl:tracking-[0.12em];
+}
+.headericons {
+  @apply w-6 h-6 xxs:w-7 xxs:h-7 lg:w-8 lg:h-8;
 }

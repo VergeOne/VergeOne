@@ -111,16 +111,16 @@ export default function Home() {
         {/* Start Hero Wrapper */}
         <div className="h-[84vh] w-full">
           {/* Start Hero Content Wrapper */}
-          <div className="absolute animate-fade  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] flex flex-col gap-6 items-center">
+          <div className="absolute animate-fade top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] xl:w-[70%] flex flex-col gap-4 lg:gap-7 items-center">
             <h1
               className={
                 monte.className +
-                " select-none tracking-[0.3em] text-[68px] text-center"
+                " select-none tracking-[0.3em] text-3xl 2xl:text-[68px] text-center"
               }
             >
               Verge-One
             </h1>
-            <h3 className="w-full text-center text-2xl tracking-[0.27em]">
+            <h3 className="w-full text-center 2xl:mt-5 text-md 2xl:text-2xl tracking-[0.22em] xl:tracking-[0.27em]">
               Ihr Partner für Web-Dienstleistungen,
               <br />
               die das Beste aus ihrem Unternehmen herausholen.
@@ -129,7 +129,7 @@ export default function Home() {
               onClick={() => {
                 scrolltoAnchor("Kontakt");
               }}
-              className="border-solid rounded-full border-[2px] mt-2 border-white tracking-[0.25em] text-xl font-normal py-2 px-9"
+              className="border-solid rounded-full border-[1px] lg:border-[2px] mt-2 border-white tracking-[0.25em] text-md xl:text-xl font-normal py-1.5 px-6 xl:py-2 xl:px-9"
             >
               Kontakt
             </button>
@@ -147,7 +147,7 @@ export default function Home() {
       </div>
       {/* End First Page Wrapper */}
       {/* Start Intro Wrapper */}
-      <div className="h-[70vh] flex items-center justify-center">
+      <div className=" flex items-center justify-center">
         {/* Start Intro Content Wrapper */}
         <div className="flex flex-col gap-8 items-center justify-center">
           <h2
@@ -187,12 +187,12 @@ export default function Home() {
           <h2
             className={
               monte.className +
-              " text-animate text-[60px] font-medium tracking-[0.25em]"
+              " text-animate xl:text-[55px] 2xl:text-[60px] font-medium tracking-[0.25em]"
             }
           >
             Unsere Mission
           </h2>
-          <p className="text-animate text-center text-2xl mt-5 leading-[2.75rem] tracking-[0.18em] w-[70%]">
+          <p className="text-animate text-center xl:text-xl 2xl:text-2xl 2xl:mt-5 xl:leading-[2.2rem] 2xl:leading-[2.75rem] tracking-[0.18em] w-[70%]">
             Bei Verge-One spezialisieren wir uns auf die Automatisierung
             repetitiver Aufgaben, um Ihrem Unternehmen Zeit und Geld zu sparen.
             Durch maßgeschneiderte Anwendungen und Datenbankintegration sorgen
@@ -205,7 +205,7 @@ export default function Home() {
           <h2
             className={
               monte.className +
-              " text-animate text-[52px] font-medium tracking-[0.25em]"
+              " text-animate xl:text-[43px] 2xl:text-[52px] font-medium tracking-[0.25em]"
             }
           >
             Alle Vorteile auf einen Blick
@@ -218,7 +218,7 @@ export default function Home() {
                 </h3>
               </div>
               <div className="flex justify-center items-center h-3/4">
-                <p className="text-center text-lg leading-[2rem] tracking-[0.12em]">
+                <p className="vorteil-desc">
                   Manuelle Dateneingabe kann zu Fehlern führen. Unsere
                   automatisierten Lösungen gewährleisten die Genauigkeit und
                   Integrität der Daten, reduzieren das Risiko von Fehlern und
@@ -233,7 +233,7 @@ export default function Home() {
                 </h3>
               </div>
               <div className="flex justify-center items-center h-3/4">
-                <p className="text-center text-lg leading-[2rem] tracking-[0.12em]">
+                <p className="vorteil-desc">
                   Verabschieden Sie sich von verstreuten Excel-Dateien und
                   inkonsistenten Daten. Mit unserer zentralen Datenverwaltung
                   werden alle Ihre Informationen sicher an einem Ort gespeichert
@@ -248,7 +248,7 @@ export default function Home() {
                 </h3>
               </div>
               <div className="flex justify-center items-center h-3/4">
-                <p className="text-center text-lg leading-[2rem] tracking-[0.12em]">
+                <p className="vorteil-desc">
                   Unser wettbewerbsfähiger Preis stellt sicher, dass Sie den
                   besten Wert für Ihre Investition erhalten und hochwertige
                   Automatisierungslösungen für Ihr Unternehmen zugänglich
@@ -263,7 +263,7 @@ export default function Home() {
                 </h3>
               </div>
               <div className="flex justify-center items-center h-3/4">
-                <p className="text-center text-lg leading-[2rem] tracking-[0.12em]">
+                <p className="vorteil-desc">
                   Durch vollständig optimierte Automatisierung werden Ihre
                   Arbeitsabläufe gestrafft, was wertvolle Zeit spart und Ihrem
                   Team ermöglicht, sich auf strategischere Aufgaben zu
