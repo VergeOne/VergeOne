@@ -11,6 +11,8 @@ const config: Config = {
       xxs: "350px",
       xs: "475px",
       ...defaultTheme.screens,
+      "3xl": "1600px",
+      "4xl": "1800px",
     },
     extend: {
       colors: {

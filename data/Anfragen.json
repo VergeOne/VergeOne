@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Dominik Lenhart",
+    "email": "Dominik-Lenhart@gmx.net",
+    "options": [
+      {
+        "name": "Custom-Solution",
+        "value": true
+      },
+      {
+        "name": "Automation",
+        "value": false
+      },
+      {
+        "name": "Datenbank",
+        "value": false
+      },
+      {
+        "name": "Allgemein",
+        "value": true
+      },
+      {
+        "name": "Beratung",
+        "value": false
+      }
+    ],
+    "message": "test",
+    "date": "2024-08-15T18:22:50.777Z"
+  }
+]

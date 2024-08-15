@@ -6,8 +6,40 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Verge-One",
+  applicationName: "Verge-One",
+  creator: "Verge-One",
+  openGraph: {
+    title: "Verge-One",
+    type: "website",
+    countryName: "Germany",
+    description: "Official Website for the Verge-One Company",
+    siteName: "Verge-One",
+  },
+  keywords: [
+    "VergeOne",
+    "Verge-One",
+    "Verge One",
+    "verge one",
+    "Automationen",
+    "Custom Apps",
+    "Datenbanken",
+    "Web Dienstleistungen",
+    "Anwendungen",
+    "IT Dienstleister",
+    "Web Dienstleister",
+    "IT Startups",
+    "Internet Dienstleister",
+  ],
+  publisher: "Verge-One",
+  viewport: {
+    width: "1",
+    initialScale: 1,
+    minimumScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
   description:
-    "Ihr Partner für Web-Dienstleistungen, die ihr Unternehmen herausstechen lassen. Maßgeschneiderte Applikationen, Automationen und Datenbankanbindungen",
+    "Ihr Partner für Web-Dienstleistungen, die ihr Unternehmen herausstechen lassen. Maßgeschneiderte Applikationen, Automationen und Datenbankanbindungen, die Ihnen nicht nur Zeit und Geld sparen, sondern den Stress aus ihrem Alltag nehmen. ",
 };
 
 export default function RootLayout({

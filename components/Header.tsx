@@ -11,7 +11,7 @@ const Header = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
           height={62}
         />
       </div>
-      <div className=" xl:header-animate-xl 2xl:w-[45%] lg:w-[60%] header-animate-lg hidden md:flex z-40 justify-between links items-center *:hover:cursor-pointer animate-fadeTop absolute left-1/2 -translate-x-1/2  text-lg  2xl:text-[1.3rem]">
+      <div className=" xl:header-animate-xl 2xl:header-animate-2xl 4xl:w-[45%] 3xl:w-[52%] lg:w-[60%] header-animate-lg hidden md:flex z-40 justify-between links items-center *:hover:cursor-pointer animate-fadeTop absolute left-1/2 -translate-x-1/2  text-lg  2xl:text-[1.3rem]">
         <h2 onClick={() => scrolltoAnchor("Home")}>Home</h2>
         <h2 onClick={() => scrolltoAnchor("Dienstleistungen")}>
           Dienstleistungen
@@ -19,7 +19,15 @@ const Header = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
         <h2 onClick={() => scrolltoAnchor("Portfolio")}>Portfolio</h2>
         <h2 onClick={() => scrolltoAnchor("Preise")}>Preise</h2>
         <h2 onClick={() => scrolltoAnchor("Kontakt")}>Kontakt</h2>
+        <div className="absolute bottom-0 left-5 bg-gradient-to-r from-brand-prim to-brand-sec h-0.5 timeline" />
       </div>
+      <Image
+        className="w-10 h-10 right-5 absolute md:hidden"
+        src={"/hamburger.svg"}
+        alt={"hamburger"}
+        width={52}
+        height={52}
+      />
       <div className="animate-fadeRight-sm sm:animate-fadeRight flex select-none gap-6 lg:gap-8 items-center absolute left-1/2 -translate-x-1/2 sm:left-auto sm:right-20">
         <a target="_blank" href="https://instagram.com/_vergeone_">
           <Image
@@ -30,14 +38,14 @@ const Header = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
             height={29}
           />
         </a>
-        <a target="_blank" href="https://wha.me/verge-one">
+        <a target="_blank" href="">
           <Image
             className="headericons"
             src="/whatsapp.svg"
             alt="WhatsApp-logo"
             width={29}
             height={29}
-          />{" "}
+          />
         </a>
         <a href="mailto:info@verge-one.com">
           <Image
