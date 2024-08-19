@@ -22,6 +22,8 @@ export async function POST(req: NextRequest) {
       process.cwd() + "/data/Anfragen.json",
       JSON.stringify(json, null, 2),
     );
+
+    //TODO: Implement DKIM for Mails on server
     const transporter = nodemailer.createTransport({
       host: "smtp.strato.de",
       port: 465,

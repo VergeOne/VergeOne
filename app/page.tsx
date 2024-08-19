@@ -18,15 +18,25 @@ export default function Home() {
   const [formname, setformname] = useState("");
   const [formemail, setformemail] = useState("");
   const [formmessage, setformmessage] = useState("");
-  const [cust, setcust] = useState(false);
-  const [auto, setauto] = useState(false);
-  const [db, setdb] = useState(false);
-  const [allg, setallg] = useState(false);
-  const [bera, setbera] = useState(false);
+  const [options, setOptions] = useState({
+    cust: false,
+    auto: false,
+    db: false,
+    allg: false,
+    bera: false,
+  });
   const [missing, setmissing] = useState(false);
   const [mailsucc, setMailsucc] = useState(false);
   const [mailpending, setMailpending] = useState(false);
   const [mailfailed, setMailfailed] = useState(false);
+
+  const toggleOption = (optionName: keyof typeof options) => {
+    setOptions((prevState) => ({
+      ...prevState,
+      [optionName]: !prevState[optionName],
+    }));
+  };
+
   const scrolltoAnchor = (id: string) => {
     try {
       const y =
@@ -65,12 +75,20 @@ export default function Home() {
   async function sendMail() {
     check_correct(formname, "formname", "text");
     check_correct(formemail, "formemail", "email");
-    check_correct([cust, auto, db, allg, bera], "formoptions", "options");
+    check_correct(
+      [options.cust, options.auto, options.db, options.allg, options.bera],
+      "formoptions",
+      "options",
+    );
     if (
       !(
         check_correct(formname, "formname", "text") &&
         check_correct(formemail, "formemail", "email") &&
-        check_correct([cust, auto, db, allg, bera], "formoptions", "options")
+        check_correct(
+          [options.cust, options.auto, options.db, options.allg, options.bera],
+          "formoptions",
+          "options",
+        )
       )
     ) {
       setmissing(true);
@@ -84,11 +102,11 @@ export default function Home() {
         name: formname,
         email: formemail,
         options: [
-          { name: "Custom-Solution", value: cust },
-          { name: "Automation", value: auto },
-          { name: "Datenbank", value: db },
-          { name: "Allgemein", value: allg },
-          { name: "Beratung", value: bera },
+          { name: "Custom-Solution", value: options.cust },
+          { name: "Automation", value: options.auto },
+          { name: "Datenbank", value: options.db },
+          { name: "Allgemein", value: options.allg },
+          { name: "Beratung", value: options.bera },
         ],
         message: formmessage,
       }),
@@ -123,7 +141,7 @@ export default function Home() {
             >
               Verge-One
             </h1>
-            <h3 className="w-full text-center 2xl:mt-5 text-md 2xl:text-2xl tracking-[0.22em] xl:tracking-[0.27em]">
+            <h3 className="w-full text-center 2xl:mt-5 text-md 2xl:text-xl tracking-[0.22em] xl:tracking-[0.27em]">
               Ihr Partner für Web-Dienstleistungen,
               <br />
               die das Beste aus ihrem Unternehmen herausholen.
@@ -132,7 +150,7 @@ export default function Home() {
               onClick={() => {
                 scrolltoAnchor("Kontakt");
               }}
-              className="border-solid rounded-full border-[1px] lg:border-[2px] mt-2 border-white tracking-[0.25em] text-md xl:text-xl font-normal py-1.5 px-6 xl:py-2 xl:px-9"
+              className="border-solid rounded-full border-[1px] lg:border-[2px] mt-2 border-white tracking-[0.25em] text-md xl:text-lg font-normal py-1.5 px-6 xl:py-[0.35rem] xl:px-7"
             >
               Kontakt
             </button>
@@ -150,7 +168,7 @@ export default function Home() {
       </div>
       {/* End First Page Wrapper */}
       {/* Start Intro Wrapper */}
-      <div className="mt-64 flex items-center justify-center">
+      <div className="mt-72 flex items-center justify-center">
         {/* Start Intro Content Wrapper */}
         <div className="flex flex-col gap-8 items-center justify-center">
           <h2
@@ -332,7 +350,7 @@ export default function Home() {
       {/* Start Offers */}
       <div
         id="Preise"
-        className="text-animate-less px-12 lg:px-24 flex flex-col lg:flex-row items-center justify-between w-full gap-8 mt-12"
+        className="text-animate-less px-12 lg:px-24 flex flex-col lg:flex-row items-center justify-between w-full gap-6 mt-16"
       >
         <div className="offer">
           <h1>Automationen</h1>
@@ -371,7 +389,7 @@ export default function Home() {
       <div className="flex py-12 xl:py-24 items-center flex-col gap-8 justify-center">
         <h2
           className={
-            "text-animate-less text-center xl:text-xl xl:mt-5 leading-7 xl:leading-[2.75rem] tracking-[0.20em] xl:tracking-[0.18em] w-[80%] xl:w-[70%]"
+            "text-animate-less text-center xl:text-xl xl:mt-2 leading-7 xl:leading-[2.75rem] tracking-[0.20em] xl:tracking-[0.18em] w-[80%] xl:w-[70%]"
           }
         >
           Für eine genauere Preisabschätzung können Sie Uns gerne kontaktieren
@@ -425,42 +443,32 @@ export default function Home() {
             className="grid gap-4 font-light xl:font-norrmal grid-cols-1 xl:grid-cols-3 *:grow rounded-2xl p-3 mt-2"
           >
             <button
-              onClick={() => {
-                setcust(!cust);
-              }}
-              className={cust ? "option-enabled" : "option-disabled"}
+              onClick={() => toggleOption("cust")}
+              className={options.cust ? "option-enabled" : "option-disabled"}
             >
               Custom-Anwendung
             </button>
             <button
-              onClick={() => {
-                setauto(!auto);
-              }}
-              className={auto ? "option-enabled" : "option-disabled"}
+              onClick={() => toggleOption("auto")}
+              className={options.auto ? "option-enabled" : "option-disabled"}
             >
               Automationen
             </button>
             <button
-              onClick={() => {
-                setdb(!db);
-              }}
-              className={db ? "option-enabled" : "option-disabled"}
+              onClick={() => toggleOption("db")}
+              className={options.db ? "option-enabled" : "option-disabled"}
             >
               Datenbankanbindung
             </button>
             <button
-              onClick={() => {
-                setbera(!bera);
-              }}
-              className={bera ? "option-enabled" : "option-disabled"}
+              onClick={() => toggleOption("bera")}
+              className={options.bera ? "option-enabled" : "option-disabled"}
             >
               Beratungsgespräch
             </button>
             <button
-              onClick={() => {
-                setallg(!allg);
-              }}
-              className={allg ? "option-enabled" : "option-disabled"}
+              onClick={() => toggleOption("allg")}
+              className={options.allg ? "option-enabled" : "option-disabled"}
             >
               Allgemein
             </button>
@@ -478,7 +486,7 @@ export default function Home() {
         </div>
         <button
           onClick={() => {
-            if (!mailfailed && !mailsucc) sendMail();
+            if (!mailfailed && !mailpending && !mailsucc) sendMail();
           }}
           className={
             "flex items-center z-10 gap-2 border-solid rounded-full border-[1px] lg:border-2 border-white tracking-[0.2em] lg:text-xl font-normal py-2 " +

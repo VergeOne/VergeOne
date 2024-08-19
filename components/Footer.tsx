@@ -1,7 +1,7 @@
 import { NextFont } from "next/dist/compiled/@next/font";
 import Image from "next/image";
 import Link from "next/link";
-
+//TODO: adapt footer for mobile
 const Footer = ({
   scrolltoAnchor,
   inter,

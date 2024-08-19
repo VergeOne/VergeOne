@@ -11,7 +11,7 @@ const Header = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
           height={62}
         />
       </div>
-      <div className=" xl:header-animate-xl 2xl:header-animate-2xl 4xl:w-[45%] 3xl:w-[52%] lg:w-[60%] header-animate-lg hidden md:flex z-40 justify-between links items-center *:hover:cursor-pointer animate-fadeTop absolute left-1/2 -translate-x-1/2  text-lg  2xl:text-[1.3rem]">
+      <div className=" xl:header-animate-xl 2xl:header-animate-2xl 4xl:w-[45%] 3xl:w-[52%] lg:w-[60%] header-animate-lg hidden md:flex z-40 justify-between links items-center *:hover:cursor-pointer animate-fadeTop absolute left-1/2 -translate-x-1/2  text-lg  2xl:text-[1.2rem]">
         <h2 onClick={() => scrolltoAnchor("Home")}>Home</h2>
         <h2 onClick={() => scrolltoAnchor("Dienstleistungen")}>
           Dienstleistungen
