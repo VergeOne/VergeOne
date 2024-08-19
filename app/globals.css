@@ -25,6 +25,11 @@ body * {
     animation: header-expand-2xl linear forwards;
     animation-timeline: scroll();
   }
+  .header-animate-xl {
+    position: fixed;
+    animation: header-expand-xl linear forwards;
+    animation-timeline: scroll();
+  }
   .timeline {
     display: none;
     border-radius: 999px;
@@ -35,9 +40,9 @@ body * {
     animation: header-expand-2xl-timeline linear forwards;
     animation-timeline: scroll();
   }
-  .header-animate-xl {
+  .header-animate-4xl {
     position: fixed;
-    animation: header-expand-xl linear forwards;
+    animation: header-expand-4xl linear forwards;
     animation-timeline: scroll();
   }
   .header-animate-lg {
@@ -70,7 +75,7 @@ body * {
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(4px);
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
-    width: 75% !important;
+    width: 75%;
     transform: translate(-50%, 0);
     top: 10px;
   }
@@ -78,14 +83,14 @@ body * {
     background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(4px);
-    width: 75% !important;
+    width: 75%;
     transform: translate(-50%, 0);
     top: 10px;
   }
 }
-@keyframes header-expand-xl {
+@keyframes header-expand-4xl {
   0% {
-    width: 53%;
+    width: 60%;
     background-color: transparent;
     top: 7vh;
     transform: translate(-50%, -50%);
@@ -94,7 +99,7 @@ body * {
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(4px);
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
-    width: 80% !important;
+    width: 80%;
     transform: translate(-50%, 0);
     top: 10px;
   }
@@ -102,14 +107,14 @@ body * {
     background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(4px);
-    width: 80% !important;
+    width: 80%;
     transform: translate(-50%, 0);
     top: 10px;
   }
 }
 @keyframes header-expand-lg {
   0% {
-    width: 60% !important;
+    width: 60%;
     background-color: transparent;
     top: 7vh;
     transform: translate(-50%, -50%);
@@ -328,5 +333,5 @@ body * {
   @apply text-center text-sm 2xl:text-lg leading-5 xl:leading-[1.5rem] 2xl:leading-[2rem] xl:tracking-widest 2xl:tracking-[0.12em];
 }
 .headericons {
-  @apply w-6 h-6 xxs:w-7 xxs:h-7 lg:w-8 lg:h-8 2xl:h-7 2xl:w-7;
+  @apply w-6 h-6 xxs:w-7 xxs:h-7 lg:w-6 lg:h-6 2xl:h-7 2xl:w-7;
 }

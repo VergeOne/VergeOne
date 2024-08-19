@@ -1,6 +1,7 @@
+/** @type {import('tailwindcss').Config} */
 import type { Config } from "tailwindcss";
 const defaultTheme = require("tailwindcss/defaultTheme");
-const config: Config = {
+module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,9 +11,9 @@ const config: Config = {
     screens: {
       xxs: "350px",
       xs: "475px",
+      laptop: "1500px",
+      desktop: "1720px",
       ...defaultTheme.screens,
-      "3xl": "1600px",
-      "4xl": "1800px",
     },
     extend: {
       colors: {
@@ -97,4 +98,3 @@ const config: Config = {
     },
   },
 };
-export default config;

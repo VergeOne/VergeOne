@@ -136,7 +136,7 @@ export default function Home() {
             <h1
               className={
                 monte.className +
-                " select-none tracking-[0.3em] text-4xl md:text-3xl 2xl:text-[68px] text-center"
+                " select-none tracking-[0.3em] text-4xl md:text-3xl 2xl:text-[68px] desktop:text-[77px] mb-4 text-center"
               }
             >
               Verge-One
