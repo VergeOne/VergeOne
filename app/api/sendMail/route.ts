@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
   try {
     const { name, email, options, message } = await req.json();
     let file = fs.readFileSync(process.cwd() + "/data/Anfragen.json");
-    let json = [];
+    let json: any[];
     try {
       json = await JSON.parse(file.toString());
     } catch (e: any) {

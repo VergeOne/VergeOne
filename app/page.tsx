@@ -4,8 +4,7 @@ import Image from "next/image";
 import { Inter, Montserrat } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useRef, useState } from "react";
-import clsx from "clsx";
+import { useState } from "react";
 import { FaCheckCircle, FaPaperPlane } from "react-icons/fa";
 import { CgClose } from "react-icons/cg";
 
