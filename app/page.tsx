@@ -7,7 +7,6 @@ import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
 import { FaCheckCircle, FaPaperPlane } from "react-icons/fa";
 import { CgClose } from "react-icons/cg";
-import dynamic from "next/dynamic";
 const monte = Montserrat({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], weight: ["300"] });
 const emailregex =
@@ -28,7 +27,7 @@ export default function Home() {
       console.log("Found Fade_In_Elem elements:", fadeElems);
 
       for (let sceneelem of fadeElems) {
-        let scene = new ScrollMagic.Scene({
+        new ScrollMagic.Scene({
           triggerElement: sceneelem,
           duration: sceneelem.clientHeight + window.innerHeight * 0.8,
           triggerHook: 0.8,
@@ -42,7 +41,7 @@ export default function Home() {
       console.log("Found Fade_In_Elem_Less elements:", fadeLessElems);
 
       for (let sceneelem of fadeLessElems) {
-        let scene2 = new ScrollMagic.Scene({
+        new ScrollMagic.Scene({
           triggerElement: sceneelem,
           duration: sceneelem.clientHeight + window.innerHeight * 0.9,
           triggerHook: 0.9,
