@@ -135,7 +135,6 @@ export default function Home() {
     }
     setMailpending(false);
   }
-  setTimeout(() => console.log(window.innerWidth), 500);
   return (
     <>
       {/* Start First Page Wrapper */}
@@ -147,16 +146,16 @@ export default function Home() {
         {/* Start Hero Wrapper */}
         <div className="mt-20 xxs:mt-32 xs:mt-32 md:h-[84vh] w-full flex flex-col items-center">
           {/* Start Hero Content Wrapper */}
-          <div className="md:absolute animate-fade md:top-1/2 left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-[90%] xl:w-[70%] flex flex-col gap-4 lg:gap-7 items-center">
+          <div className=" md:absolute md:top-1/2 left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-[90%] xl:w-[70%] flex flex-col gap-4 lg:gap-7 items-center">
             <h1
               className={
                 monte.className +
-                " select-none tracking-[0.3em] text-4xl md:text-3xl 2xl:text-[68px] desktop:text-[77px] mb-4 text-center"
+                " select-none Fade_In_Elem tracking-[0.3em] text-4xl md:text-3xl 2xl:text-[68px] desktop:text-[77px] mb-4 text-center"
               }
             >
               Verge-One
             </h1>
-            <h3 className="w-full text-center 2xl:mt-5 text-md 2xl:text-xl tracking-[0.22em] xl:tracking-[0.27em]">
+            <h3 className="w-full Fade_In_Elem text-center 2xl:mt-5 text-md 2xl:text-xl tracking-[0.22em] xl:tracking-[0.27em]">
               Ihr Partner für Web-Dienstleistungen,
               <br />
               die das Beste aus ihrem Unternehmen herausholen.

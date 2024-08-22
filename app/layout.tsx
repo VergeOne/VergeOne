@@ -1,8 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const viewport: Viewport = {
+  width: "1",
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   title: "Verge-One",
@@ -31,13 +39,6 @@ export const metadata: Metadata = {
     "Internet Dienstleister",
   ],
   publisher: "Verge-One",
-  viewport: {
-    width: "1",
-    initialScale: 1,
-    minimumScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
   description:
     "Ihr Partner für Web-Dienstleistungen, die ihr Unternehmen herausstechen lassen. Maßgeschneiderte Applikationen, Automationen und Datenbankanbindungen, die Ihnen nicht nur Zeit und Geld sparen, sondern den Stress aus ihrem Alltag nehmen. ",
 };
