@@ -19,17 +19,40 @@ export default function Home() {
     if (typeof window !== "undefined") {
       const ScrollMagic = require("scrollmagic");
       const controller = new ScrollMagic.Controller();
-      for (let sceneelem of document.querySelectorAll(".Fade_In_Elem")) {
+
+      // Logging for debugging
+      console.log("Initializing ScrollMagic scenes");
+
+      // Fade_In_Elem loop
+      const fadeElems = document.querySelectorAll(".Fade_In_Elem");
+      console.log("Found Fade_In_Elem elements:", fadeElems);
+
+      for (let sceneelem of fadeElems) {
         let scene = new ScrollMagic.Scene({
           triggerElement: sceneelem,
-          duration: sceneelem.clientHeight + window?.innerHeight * 0.8,
+          duration: sceneelem.clientHeight + window.innerHeight * 0.8,
           triggerHook: 0.8,
+        })
+          .setClassToggle(sceneelem, "SM_Fade_In")
+          .addTo(controller);
+      }
+
+      // Fade_In_Elem_Less loop
+      const fadeLessElems = document.querySelectorAll(".Fade_In_Elem_Less");
+      console.log("Found Fade_In_Elem_Less elements:", fadeLessElems);
+
+      for (let sceneelem of fadeLessElems) {
+        let scene2 = new ScrollMagic.Scene({
+          triggerElement: sceneelem,
+          duration: sceneelem.clientHeight + window.innerHeight * 0.9,
+          triggerHook: 0.9,
         })
           .setClassToggle(sceneelem, "SM_Fade_In")
           .addTo(controller);
       }
     }
   }, []);
+
   const [formname, setformname] = useState("");
   const [formemail, setformemail] = useState("");
   const [formmessage, setformmessage] = useState("");
@@ -227,7 +250,7 @@ export default function Home() {
           >
             Unsere Mission
           </h2>
-          <p className=" text-center Fade_In_Elem xl:text-xl 2xl:text-2xl 2xl:mt-5 leading-7 xl:leading-[2.2rem] 2xl:leading-[2.75rem] tracking-[0.21em] w-[70%]">
+          <p className=" text-center Fade_In_Elem xl:text-xl 2xl:text-2xl desktop:mt-8 leading-7 xl:leading-[2.2rem] 2xl:leading-[2.75rem] tracking-[0.21em] w-[70%]">
             Bei Verge-One spezialisieren wir uns auf die Automatisierung
             repetitiver Aufgaben, um Ihrem Unternehmen Zeit und Geld zu sparen.
             Durch maßgeschneiderte Anwendungen und Datenbankintegration sorgen
@@ -245,7 +268,7 @@ export default function Home() {
           >
             Alle Vorteile auf einen Blick
           </h2>
-          <div className="grid grid-cols-1  lg:grid-cols-5 gap-x-4 gap-y-4 w-[85%] backdrop-blur-md rounded-3xl font-light">
+          <div className="grid grid-cols-1 desktop:mt-10 lg:grid-cols-5 gap-x-4 gap-y-4 w-[85%] backdrop-blur-md rounded-3xl font-light">
             <div className="flex flex-col h-80 xl:h-72 missionItem text-center rounded-xl lg:col-span-2 bg-gray-200/15 items-center justify-start tracking-[0.2em] px-9 py-7">
               <div className="flex justify-center items-center h-[18%] lg:h-1/4">
                 <h3
@@ -359,7 +382,7 @@ export default function Home() {
       <div id="Kontakt" className={inter.className + " form"}>
         <h2
           className={
-            " text-2xl xl:text-3xl mt-64 bg-gradient-to-br border-gray-300 tracking-[0.21em] text-center"
+            " text-2xl Fade_In_Elem xl:text-3xl mt-64 bg-gradient-to-br border-gray-300 tracking-[0.21em] text-center"
           }
         >
           Wir freuen Uns auf Ihre Nachricht!
@@ -424,7 +447,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className="Fade_In_Elem">
+        <div className="Fade_In_Elem_Less">
           <p>Nachricht</p>
           <textarea
             cols={20}
@@ -439,7 +462,7 @@ export default function Home() {
             if (!mailfailed && !mailpending && !mailsucc) sendMail();
           }}
           className={
-            "flex items-center Fade_In_Elem z-10 gap-2 border-solid rounded-full border-[1px] lg:border-2 border-white tracking-[0.2em] lg:text-xl font-normal py-2 " +
+            "flex items-center Fade_In_Elem_Less z-10 gap-2 border-solid rounded-full border-[1px] lg:border-2 border-white tracking-[0.2em] lg:text-xl font-normal py-2 " +
             (mailsucc || mailpending ? " px-14" : " px-9")
           }
         >
