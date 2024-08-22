@@ -164,12 +164,12 @@ export default function Home() {
               onClick={() => {
                 scrolltoAnchor("Kontakt");
               }}
-              className="border-solid rounded-full border-[1px] lg:border-[2px] mt-2 border-white tracking-[0.25em] text-md xl:text-lg font-normal py-1.5 px-6 xl:py-[0.35rem] xl:px-7"
+              className="border-solid Fade_In_Elem rounded-full border-[1px] lg:border-[2px] mt-2 border-white tracking-[0.25em] text-md xl:text-lg font-normal py-1.5 px-6 xl:py-[0.35rem] xl:px-7"
             >
               Kontakt
             </button>
             <Image
-              className="select-none drag absolute top-1/2 left-1/2 -translate-x-1/2 blur-[100px] -translate-y-1/2 -z-10"
+              className="select-none Fade_In_Elem drag absolute top-1/2 left-1/2 -translate-x-1/2 blur-[100px] -translate-y-1/2 -z-10"
               src="/hero_high.svg"
               alt="Blob"
               width={1200}
@@ -188,12 +188,12 @@ export default function Home() {
           <h2
             className={
               monte.className +
-              " text-animate text-center text-3xl 2xl:text-[60px] font-medium tracking-[0.25em]"
+              " text-center Fade_In_Elem text-3xl 2xl:text-[60px] font-medium tracking-[0.25em]"
             }
           >
             Wer sind wir?
           </h2>
-          <p className="text-animate text-center 2xl:text-2xl leading-6 2xl:leading-10 tracking-[0.23em] 2xl:tracking-[0.27em] w-[70%]">
+          <p className=" Fade_In_Elem text-center 2xl:text-2xl leading-6 2xl:leading-10 tracking-[0.23em] 2xl:tracking-[0.27em] w-[70%]">
             Wir bei Verge-One haben es uns zur Mission gemacht, den Einstieg in
             die digitale Welt für Unternehmen so einfach wie möglich zu
             gestalten.
@@ -222,12 +222,12 @@ export default function Home() {
           <h2
             className={
               monte.className +
-              " text-animate text-3xl xl:text-[55px] 2xl:text-[60px] font-medium tracking-[0.25em]"
+              "  text-3xl xl:text-[55px] Fade_In_Elem 2xl:text-[60px] font-medium tracking-[0.25em]"
             }
           >
             Unsere Mission
           </h2>
-          <p className="text-animate text-center xl:text-xl 2xl:text-2xl 2xl:mt-5 leading-7 xl:leading-[2.2rem] 2xl:leading-[2.75rem] tracking-[0.21em] w-[70%]">
+          <p className=" text-center Fade_In_Elem xl:text-xl 2xl:text-2xl 2xl:mt-5 leading-7 xl:leading-[2.2rem] 2xl:leading-[2.75rem] tracking-[0.21em] w-[70%]">
             Bei Verge-One spezialisieren wir uns auf die Automatisierung
             repetitiver Aufgaben, um Ihrem Unternehmen Zeit und Geld zu sparen.
             Durch maßgeschneiderte Anwendungen und Datenbankintegration sorgen
@@ -236,16 +236,16 @@ export default function Home() {
             auch Fehler, die durch manuelle Handhabung entstehen.
           </p>
         </div>
-        <div className="flex flex-col gap-10 items-center justify-center mt-80 w-full">
+        <div className="flex flex-col Fade_In_Elem gap-10 items-center justify-center mt-80 w-full">
           <h2
             className={
               monte.className +
-              " text-animate text-center text-2xl w-[75%] xl:text-[43px] 2xl:text-[52px] font-medium tracking-[0.25em]"
+              "  text-center text-2xl w-[75%] xl:text-[43px] 2xl:text-[52px] font-medium tracking-[0.25em]"
             }
           >
             Alle Vorteile auf einen Blick
           </h2>
-          <div className="grid grid-cols-1 text-animate-less lg:grid-cols-5 gap-x-4 gap-y-4 w-[85%] backdrop-blur-md rounded-3xl font-light">
+          <div className="grid grid-cols-1  lg:grid-cols-5 gap-x-4 gap-y-4 w-[85%] backdrop-blur-md rounded-3xl font-light">
             <div className="flex flex-col h-80 xl:h-72 missionItem text-center rounded-xl lg:col-span-2 bg-gray-200/15 items-center justify-start tracking-[0.2em] px-9 py-7">
               <div className="flex justify-center items-center h-[18%] lg:h-1/4">
                 <h3
@@ -328,10 +328,10 @@ export default function Home() {
       </div>
       {/* End Mission Wrapper */}
       {/* Start Customer Wrapper */}
-      <h2 className="text-center text-2xl xl:text-5xl mt-48 leading-[2.75rem] tracking-[0.23em]">
+      <h2 className="text-center Fade_In_Elem text-2xl xl:text-5xl mt-48 leading-[2.75rem] tracking-[0.23em]">
         Kundenstimmen
       </h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-6 gap-x-6 my-16 w-full px-[8%] text-animate-less">
+      <div className="grid grid-cols-1 Fade_In_Elem lg:grid-cols-2 gap-y-6 gap-x-6 my-16 w-full px-[8%] ">
         <div className="review">
           <h2>LaMa Bio</h2>
           <p>
@@ -351,84 +351,20 @@ export default function Home() {
       </div>
       {/* End Customer Wrapper */}
       {/* Start Offer Wrapper */}
-      <div className="flex items-center justify-center flex-col">
-        <h2
-          className={
-            monte.className +
-            " text-animate text-center mt-64 text-3xl xl:text-[60px] font-medium tracking-[0.25em]"
-          }
-        >
-          Unsere Preise
-        </h2>
-      </div>
+
       {/* Start Offers */}
-      <div
-        id="Preise"
-        className="text-animate-less px-12 lg:px-24 flex flex-col lg:flex-row items-center justify-between w-full gap-6 mt-16"
-      >
-        <div className="offer">
-          <h1>Automationen</h1>
-          <div>
-            <p>- Datenintegrität gewährleistet</p>
-            <p>- Zeitersparnis</p>
-            <p>- Elimination repetitiver Aufgaben</p>
-          </div>
-          <h2>
-            <span>ab </span> 1.495€
-          </h2>
-        </div>
-        <div id="offer-mid" className="offer">
-          <h1>Custom-Solutions</h1>
-          <div>
-            <p>- maßgeschneiderte Web-anwendungen</p>
-            <p>- User-Management</p>
-            <p>- Nach Belieben erweiterbar</p>
-          </div>
-          <h2>
-            <span>ab </span> 2.495€
-          </h2>
-        </div>
-        <div className="offer">
-          <h1>Datenbanken</h1>
-          <div>
-            <p>- Einfache Verwaltung</p>
-            <p>- Sicheres Daten-Management</p>
-            <p>- Schnell und Speichereffizient</p>
-          </div>
-          <h2>
-            <span>ab </span> 1.895€
-          </h2>
-        </div>
-      </div>
-      <div className="flex py-12 xl:py-24 items-center flex-col gap-8 justify-center">
-        <h2
-          className={
-            "text-animate-less text-center xl:text-xl xl:mt-2 leading-7 xl:leading-[2.75rem] tracking-[0.20em] xl:tracking-[0.18em] w-[80%] xl:w-[70%]"
-          }
-        >
-          Für eine genauere Preisabschätzung können Sie Uns gerne kontaktieren
-          oder ein kostenloses Beratungsgespräch vereinbaren.
-        </h2>
-        <button
-          onClick={() => {
-            scrolltoAnchor("Kontakt");
-          }}
-          className="border-solid mb-48 text-animate-less rounded-full border-[1px] border-white tracking-[0.25em] text-xl font-normal py-2 px-9"
-        >
-          Kontakt
-        </button>
-      </div>
+
       {/* End Offer Wrapper */}
       {/* Start Form Wrapper */}
       <div id="Kontakt" className={inter.className + " form"}>
         <h2
           className={
-            " text-2xl xl:text-3xl bg-gradient-to-br border-gray-300 tracking-[0.21em] text-center"
+            " text-2xl xl:text-3xl mt-64 bg-gradient-to-br border-gray-300 tracking-[0.21em] text-center"
           }
         >
           Wir freuen Uns auf Ihre Nachricht!
         </h2>
-        <div>
+        <div className="Fade_In_Elem">
           <p>Vor-, Nachname</p>
           <input
             id="formname"
@@ -439,7 +375,7 @@ export default function Home() {
             }}
           />
         </div>
-        <div>
+        <div className="Fade_In_Elem">
           <p className=" font">Email</p>
           <input
             id="formemail"
@@ -450,7 +386,7 @@ export default function Home() {
             }}
           />
         </div>
-        <div>
+        <div className="Fade_In_Elem">
           <p>Ich bin interessiert an...</p>
           <div
             id="formoptions"
@@ -488,7 +424,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div>
+        <div className="Fade_In_Elem">
           <p>Nachricht</p>
           <textarea
             cols={20}
@@ -503,7 +439,7 @@ export default function Home() {
             if (!mailfailed && !mailpending && !mailsucc) sendMail();
           }}
           className={
-            "flex items-center z-10 gap-2 border-solid rounded-full border-[1px] lg:border-2 border-white tracking-[0.2em] lg:text-xl font-normal py-2 " +
+            "flex items-center Fade_In_Elem z-10 gap-2 border-solid rounded-full border-[1px] lg:border-2 border-white tracking-[0.2em] lg:text-xl font-normal py-2 " +
             (mailsucc || mailpending ? " px-14" : " px-9")
           }
         >
