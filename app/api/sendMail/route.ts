@@ -47,7 +47,8 @@ export async function POST(req: NextRequest) {
         .join(", ")} <br/><br /> Nachricht: ${message}`,
     });
     await transporter.sendMail({
-      from: "Verge-One",
+      name: "Verge-One",
+      from: "Verge-One <info@verge-one.com>",
       to: email,
       subject: "Vielen Dank für Ihre Nachricht",
       html: `<div style="margin-bottom: 120px">Hallo ${name}, <br /><br /><strong>Vielen Dank für Ihre Nachricht!</strong> <br/>Wir werden uns so bald wie möglich bei Ihnen melden. <br /><br /> Schönen Tag und liebe Grüße,<br />Ihr Verge-One Team <br /><br /></div>`,

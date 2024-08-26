@@ -82,5 +82,61 @@
     ],
     "message": "Teswt123",
     "date": "2024-08-16T06:21:01.962Z"
+  },
+  {
+    "name": "Dominik Lenhart",
+    "email": "Dominik-Lenhart@gmx.net",
+    "options": [
+      {
+        "name": "Custom-Solution",
+        "value": false
+      },
+      {
+        "name": "Automation",
+        "value": false
+      },
+      {
+        "name": "Datenbank",
+        "value": false
+      },
+      {
+        "name": "Allgemein",
+        "value": false
+      },
+      {
+        "name": "Beratung",
+        "value": true
+      }
+    ],
+    "message": "uzfggufuz",
+    "date": "2024-08-24T12:36:27.320Z"
+  },
+  {
+    "name": "Dominik Lenhart",
+    "email": "Dominik-Lenhart@gmx.net",
+    "options": [
+      {
+        "name": "Custom-Solution",
+        "value": true
+      },
+      {
+        "name": "Automation",
+        "value": false
+      },
+      {
+        "name": "Datenbank",
+        "value": false
+      },
+      {
+        "name": "Allgemein",
+        "value": true
+      },
+      {
+        "name": "Beratung",
+        "value": false
+      }
+    ],
+    "message": "asdasda",
+    "date": "2024-08-24T12:41:23.496Z"
   }
 ]
