@@ -1,0 +1,10 @@
+on: 
+  push:
+    branches:
+    - release
+jobs: 
+  deploy:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: "print std"
+        run: "echo test"
