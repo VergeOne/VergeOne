@@ -7,54 +7,18 @@ import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
 import { FaCheckCircle, FaPaperPlane } from "react-icons/fa";
 import { CgClose } from "react-icons/cg";
+const _ = require("lodash");
 const monte = Montserrat({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], weight: ["300"] });
 const emailregex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+type usageJsonArr = Array<{ id: string; value: number }>;
+type usageJson = { id: string; value: number };
 export default function Home() {
-  useEffect(() => {
-    // Ensure this runs only on the client side
-    if (typeof window !== "undefined") {
-      const ScrollMagic = require("scrollmagic");
-      const controller = new ScrollMagic.Controller();
-
-      // Logging for debugging
-      console.log("Initializing ScrollMagic scenes");
-
-      // Fade_In_Elem loop
-      const fadeElems = document.querySelectorAll(".Fade_In_Elem");
-      console.log("Found Fade_In_Elem elements:", fadeElems);
-
-      for (let sceneelem of fadeElems) {
-        new ScrollMagic.Scene({
-          triggerElement: sceneelem,
-          duration: sceneelem.clientHeight + window.innerHeight * 0.8,
-          triggerHook: 0.8,
-        })
-          .setClassToggle(sceneelem, "SM_Fade_In")
-          .addTo(controller);
-      }
-
-      // Fade_In_Elem_Less loop
-      const fadeLessElems = document.querySelectorAll(".Fade_In_Elem_Less");
-      console.log("Found Fade_In_Elem_Less elements:", fadeLessElems);
-
-      for (let sceneelem of fadeLessElems) {
-        new ScrollMagic.Scene({
-          triggerElement: sceneelem,
-          duration: sceneelem.clientHeight + window.innerHeight * 0.9,
-          triggerHook: 0.9,
-        })
-          .setClassToggle(sceneelem, "SM_Fade_In")
-          .addTo(controller);
-      }
-    }
-  }, []);
-
   const [formname, setformname] = useState("");
   const [formemail, setformemail] = useState("");
   const [formmessage, setformmessage] = useState("");
+  const startTime = new Date();
   const [options, setOptions] = useState({
     cust: false,
     auto: false,
@@ -66,7 +30,43 @@ export default function Home() {
   const [mailsucc, setMailsucc] = useState(false);
   const [mailpending, setMailpending] = useState(false);
   const [mailfailed, setMailfailed] = useState(false);
+  const [usage_json, setUsage_json] = useState<usageJsonArr>([
+    { id: "visit", value: 1 },
+  ]);
+  useEffect(() => {
+    const handleBeforeUnload = (event: any) => {
+      const url = "/api/saveUsage";
+      const timeSpentInS = (new Date().getTime() - startTime.getTime()) / 1000;
+      addUsage("timeSpentInSek", timeSpentInS);
+      // Fallback for older browsers
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(usage_json),
+        keepalive: true, // This is important for fetch on unload
+      });
+    };
 
+    // Add the event listener
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    // Cleanup the event listener
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+  function addUsage(id: string, value: number) {
+    let currjson: usageJsonArr = usage_json;
+    let found = _.find(currjson, { id: id });
+    if (found) {
+      found.value += value;
+    } else {
+      currjson.push({ id: id, value: value });
+    }
+    setUsage_json(currjson);
+  }
   const toggleOption = (optionName: keyof typeof options) => {
     setOptions((prevState) => ({
       ...prevState,
@@ -157,6 +157,39 @@ export default function Home() {
     }
     setMailpending(false);
   }
+  useEffect(() => {
+    // Ensure this runs only on the client side
+    if (typeof window !== "undefined") {
+      const ScrollMagic = require("scrollmagic");
+      const controller = new ScrollMagic.Controller();
+
+      // Fade_In_Elem loop
+      const fadeElems = document.querySelectorAll(".Fade_In_Elem");
+
+      for (let sceneelem of fadeElems) {
+        new ScrollMagic.Scene({
+          triggerElement: sceneelem,
+          duration: sceneelem.clientHeight + window.innerHeight * 0.8,
+          triggerHook: 0.8,
+        })
+          .setClassToggle(sceneelem, "SM_Fade_In")
+          .addTo(controller);
+      }
+
+      // Fade_In_Elem_Less loop
+      const fadeLessElems = document.querySelectorAll(".Fade_In_Elem_Less");
+
+      for (let sceneelem of fadeLessElems) {
+        new ScrollMagic.Scene({
+          triggerElement: sceneelem,
+          duration: sceneelem.clientHeight + window.innerHeight * 0.9,
+          triggerHook: 0.9,
+        })
+          .setClassToggle(sceneelem, "SM_Fade_In")
+          .addTo(controller);
+      }
+    }
+  }, [options, mailsucc, mailpending, mailfailed]);
   return (
     <>
       {/* Start First Page Wrapper */}
@@ -177,14 +210,15 @@ export default function Home() {
             >
               Verge-One
             </h1>
-            <h3 className="w-full Fade_In_Elem text-center 2xl:mt-5 text-md 2xl:text-xl tracking-[0.22em] xl:tracking-[0.27em]">
-              Ihr Partner für Web-Dienstleistungen,
+            <h3 className="w-ful56l Fade_In_Elem text-center 2xl:mt-5 text-md 2xl:text-xl tracking-[0.22em] xl:tracking-[0.27em]">
+              Ihr Partner für Software-Dienstleistungen,
               <br />
               die das Beste aus ihrem Unternehmen herausholen.
             </h3>
             <button
               onClick={() => {
                 scrolltoAnchor("Kontakt");
+                addUsage("KontaktHero", 1);
               }}
               className="border-solid Fade_In_Elem rounded-full border-[1px] lg:border-[2px] mt-2 border-white tracking-[0.25em] text-md xl:text-lg font-normal py-1.5 px-6 xl:py-[0.35rem] xl:px-7"
             >
@@ -480,21 +514,21 @@ export default function Home() {
           )}
         </button>
         {mailsucc ? (
-          <div className="bg-green-300/50 flex justify-center items-center rounded-xl w-1/2 h-14 ">
+          <div className="bg-green-300/50 flex justify-center items-center rounded-xl max-w-fit px-24 h-14 ">
             Nachricht erfolgreich versendet!
           </div>
         ) : (
           <></>
         )}
         {mailfailed ? (
-          <div className="bg-red-300/50 flex justify-center items-center rounded-xl w-1/2 h-14 ">
+          <div className="bg-red-300/50 flex justify-center items-center rounded-xl max-w-fit px-24 h-14 ">
             Senden fehlgeschlagen! Versuche es bitte später erneut.
           </div>
         ) : (
           <></>
         )}
         {missing ? (
-          <div className="bg-orange-300/50 flex justify-center items-center rounded-xl w-1/2 h-14 ">
+          <div className="bg-orange-300/50 flex justify-center items-center rounded-xl max-w-fit px-24 h-14 ">
             Bitte alle Felder ausfüllen!
           </div>
         ) : (
@@ -502,7 +536,11 @@ export default function Home() {
         )}
       </div>
       {/* End Form Wrapper */}
-      <Footer inter={inter} scrolltoAnchor={scrolltoAnchor} />
+      <Footer
+        addUsage={addUsage}
+        inter={inter}
+        scrolltoAnchor={scrolltoAnchor}
+      />
     </>
   );
 }

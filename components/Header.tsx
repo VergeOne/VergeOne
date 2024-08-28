@@ -19,13 +19,13 @@ const Header = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
           className={"Fade_In_Elem"}
           onClick={() => scrolltoAnchor("Dienstleistungen")}
         >
-          Dienstleistungen
+          Blog
         </h2>
         <h2
           className={"Fade_In_Elem"}
           onClick={() => scrolltoAnchor("Portfolio")}
         >
-          Portfolio
+          Kontakt
         </h2>
         <h2 className={"Fade_In_Elem"} onClick={() => scrolltoAnchor("Preise")}>
           Preise
