@@ -4,11 +4,9 @@ import Link from "next/link";
 //TODO: adapt footer for mobile
 const Footer = ({
   scrolltoAnchor,
-  addUsage,
   inter,
 }: {
   scrolltoAnchor: any;
-  addUsage: any;
   inter: NextFont;
 }) => {
   return (
@@ -29,18 +27,8 @@ const Footer = ({
           inter.className + " flex gap-12 absolute left-1/2 -translate-x-1/2"
         }
       >
-        <Link
-          onClick={addUsage("impressumFromHomepage", 1)}
-          href={"/impressum"}
-        >
-          Impressum
-        </Link>
-        <Link
-          onClick={addUsage("datenschutzFromHomepage", 1)}
-          href={"/datenschutz"}
-        >
-          Datenschutzerklärung
-        </Link>
+        <Link href={"/impressum"}>Impressum</Link>
+        <Link href={"/datenschutzerklärung"}>Datenschutzerklärung</Link>
       </div>
       <div></div>
     </div>

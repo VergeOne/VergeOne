@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"], weight: ["300"] });
 const emailregex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 type usageJsonArr = Array<{ id: string; value: number }>;
-type usageJson = { id: string; value: number };
+
 export default function Home() {
   const [formname, setformname] = useState("");
   const [formemail, setformemail] = useState("");
@@ -34,7 +34,7 @@ export default function Home() {
     { id: "visit", value: 1 },
   ]);
   useEffect(() => {
-    const handleBeforeUnload = (event: any) => {
+    const handleBeforeUnload = () => {
       const url = "/api/saveUsage";
       const timeSpentInS = (new Date().getTime() - startTime.getTime()) / 1000;
       addUsage("timeSpentInSek", timeSpentInS);
@@ -57,6 +57,7 @@ export default function Home() {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
+
   function addUsage(id: string, value: number) {
     let currjson: usageJsonArr = usage_json;
     let found = _.find(currjson, { id: id });
@@ -67,6 +68,7 @@ export default function Home() {
     }
     setUsage_json(currjson);
   }
+
   const toggleOption = (optionName: keyof typeof options) => {
     setOptions((prevState) => ({
       ...prevState,
@@ -85,6 +87,7 @@ export default function Home() {
       });
     } catch (e) {}
   };
+
   function check_correct(
     elem: any,
     name: string,
@@ -109,6 +112,7 @@ export default function Home() {
       : "2px solid red";
     return correct;
   }
+
   async function sendMail() {
     check_correct(formname, "formname", "text");
     check_correct(formemail, "formemail", "email");
@@ -157,6 +161,7 @@ export default function Home() {
     }
     setMailpending(false);
   }
+
   useEffect(() => {
     // Ensure this runs only on the client side
     if (typeof window !== "undefined") {
