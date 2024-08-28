@@ -4,9 +4,11 @@ import Link from "next/link";
 //TODO: adapt footer for mobile
 const Footer = ({
   scrolltoAnchor,
+  addUsage,
   inter,
 }: {
   scrolltoAnchor: any;
+  addUsage: any;
   inter: NextFont;
 }) => {
   return (
