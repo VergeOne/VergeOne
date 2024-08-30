@@ -8,13 +8,22 @@ import { useEffect, useState } from "react";
 import { FaCheckCircle, FaPaperPlane } from "react-icons/fa";
 import { CgClose } from "react-icons/cg";
 const _ = require("lodash");
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, Power2 } from "gsap";
+gsap.registerPlugin(ScrollTrigger);
 const monte = Montserrat({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], weight: ["300"] });
+
 const emailregex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 type usageJsonArr = Array<{ id: string; value: number }>;
 
 export default function Home() {
+  //
+  //
+  // ############################# STATE MANAGEMENT #############################
+  // ############################# STATE MANAGEMENT #############################
   const [formname, setformname] = useState("");
   const [formemail, setformemail] = useState("");
   const [formmessage, setformmessage] = useState("");
@@ -30,14 +39,23 @@ export default function Home() {
   const [mailsucc, setMailsucc] = useState(false);
   const [mailpending, setMailpending] = useState(false);
   const [mailfailed, setMailfailed] = useState(false);
+  const [scrollPosMax, setScrollPosMax] = useState(0);
   const [usage_json, setUsage_json] = useState<usageJsonArr>([
     { id: "visit", value: 1 },
   ]);
+  // ############################# STATE MANAGEMENT #############################
+  // ############################# STATE MANAGEMENT #############################
+  //
+  //
+  //
+  // ############################# USAGE MANAGEMENT #############################
+  // ############################# USAGE MANAGEMENT #############################
   useEffect(() => {
     const handleBeforeUnload = () => {
       const url = "/api/saveUsage";
       const timeSpentInS = (new Date().getTime() - startTime.getTime()) / 1000;
       addUsage("timeSpentInSek", timeSpentInS);
+      addUsage("distanceScrolled", scrollPosMax);
       // Fallback for older browsers
       fetch(url, {
         method: "POST",
@@ -48,14 +66,37 @@ export default function Home() {
         keepalive: true, // This is important for fetch on unload
       });
     };
-
+    const handleScroll = () => {
+      if (window.scrollY > scrollPosMax) {
+        setScrollPosMax(window.scrollY);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
     // Add the event listener
     window.addEventListener("beforeunload", handleBeforeUnload);
 
     // Cleanup the event listener
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
+      window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+  // ############################# USAGE MANAGEMENT #############################
+  // ############################# USAGE MANAGEMENT #############################
+
+  //TODO: mach das fertig, aktuell print wenn maus in container, jetzt binde ein div dran und lass es bewegen.
+  useEffect(() => {
+    document.addEventListener("mousemove", (evt: MouseEvent) => {
+      let rects = document.querySelectorAll(".anim_cont_grad");
+      if (
+        evt.clientX > rects[0].getBoundingClientRect().left &&
+        evt.clientX < rects[0].getBoundingClientRect().right &&
+        evt.clientY > rects[0].getBoundingClientRect().top &&
+        evt.clientY < rects[0].getBoundingClientRect().bottom
+      ) {
+        console.log("inside");
+      }
+    });
   }, []);
 
   function addUsage(id: string, value: number) {
@@ -195,6 +236,7 @@ export default function Home() {
       }
     }
   }, [options, mailsucc, mailpending, mailfailed]);
+
   return (
     <>
       {/* Start First Page Wrapper */}
@@ -216,7 +258,7 @@ export default function Home() {
               Verge-One
             </h1>
             <h3 className="w-ful56l Fade_In_Elem text-center 2xl:mt-5 text-md 2xl:text-xl tracking-[0.22em] xl:tracking-[0.27em]">
-              Ihr Partner für Software-Dienstleistungen,
+              Ihr Partner für Software-Lösungen,
               <br />
               die das Beste aus ihrem Unternehmen herausholen.
             </h3>
@@ -266,9 +308,11 @@ export default function Home() {
       </div>
       {/* End Intro Wrapper */}
       {/* Start Scroll-animation Wrapper */}
-      <div className="hidden lg:block h-[100vh] relative">
+      <div className="hidden lg:block h-[100vh] w-full relative">
+        {/*TODO: Do something with this blob, animate it*/}
         <Image
-          className="animate-blob-trans [animation-timeline:view()] blur-[200px] select-none drag absolute translate-x-1/2 translate-y-1/2 bottom-0 right-0 -z-10"
+          id="Blob_Animate"
+          className=" blur-[200px] opacity-40 select-none drag absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
           src="/hero_high.svg"
           alt="Blob"
           width={3500}
@@ -293,7 +337,7 @@ export default function Home() {
             repetitiver Aufgaben, um Ihrem Unternehmen Zeit und Geld zu sparen.
             Durch maßgeschneiderte Anwendungen und Datenbankintegration sorgen
             wir dafür, dass Ihre Abläufe effizienter und kostengünstiger werden.
-            Unsere Lösungen senken nicht nur die Kosten, sondern eliminieren
+            Unsere Lösungen senken nicht nur Ihre Kosten, sondern eliminieren
             auch Fehler, die durch manuelle Handhabung entstehen.
           </p>
         </div>
@@ -307,7 +351,7 @@ export default function Home() {
             Alle Vorteile auf einen Blick
           </h2>
           <div className="grid grid-cols-1 desktop:mt-10 lg:grid-cols-5 gap-x-4 gap-y-4 w-[85%] backdrop-blur-md rounded-3xl font-light">
-            <div className="flex flex-col h-80 xl:h-72 missionItem text-center rounded-xl lg:col-span-2 bg-gray-200/15 items-center justify-start tracking-[0.2em] px-9 py-7">
+            <div className="flex anim_cont_grad flex-col h-80 xl:h-72 missionItem text-center rounded-xl lg:col-span-2 bg-gray-200/15 items-center justify-start tracking-[0.2em] px-9 py-7">
               <div className="flex justify-center items-center h-[18%] lg:h-1/4">
                 <h3
                   className={
