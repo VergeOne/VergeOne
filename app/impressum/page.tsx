@@ -45,10 +45,7 @@ const impressum = () => {
         <div>
           <h2 className={"text-3xl font-semibold"}>Haftungsausschluss: </h2>
           <br />
-          <br />
-          <h2 className={"text-2xl font-semibold"}>Haftung für Links</h2>
-          <br />
-          <br />
+          <h2 className={"text-2xl mb-1.5 font-semibold"}>Haftung für Links</h2>
           Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren
           Inhalte wir keinen Einfluss haben. Deshalb können wir für diese
           fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der
@@ -62,9 +59,7 @@ const impressum = () => {
           umgehend entfernen.
           <br />
           <br />
-          <h2 className={"text-2xl font-semibold"}>Urheberrecht</h2>
-          <br />
-          <br />
+          <h2 className={"text-2xl mb-1.5 font-semibold"}>Urheberrecht</h2>
           Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen
           Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung,
           Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
@@ -79,9 +74,7 @@ const impressum = () => {
           werden wir derartige Inhalte umgehend entfernen.
           <br />
           <br />
-          <h2 className={"text-2xl font-semibold"}>Datenschutz</h2>
-          <br />
-          <br />
+          <h2 className={"text-2xl mb-1.5 font-semibold"}>Datenschutz</h2>
           Die Nutzung unserer Webseite ist in der Regel ohne Angabe
           personenbezogener Daten möglich. Soweit auf unseren Seiten
           personenbezogene Daten (beispielsweise Name, Anschrift oder

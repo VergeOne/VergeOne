@@ -10,6 +10,7 @@ import { CgClose } from "react-icons/cg";
 const _ = require("lodash");
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2 } from "gsap";
+import Logo from "@/components/logo";
 gsap.registerPlugin(ScrollTrigger);
 const monte = Montserrat({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], weight: ["300"] });
@@ -357,6 +358,7 @@ export default function Home() {
           width={3500}
           height={2500}
         />
+        <Logo />
       </div>
       {/* End Scroll-animation Wrapper */}
       {/* Start Mission Wrapper */}

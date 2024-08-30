@@ -19,7 +19,7 @@ const Header = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
           className={"Fade_In_Elem"}
           onClick={() => scrolltoAnchor("Dienstleistungen")}
         >
-          Dienstleistungen
+          Blog
         </h2>
         <h2
           className={"Fade_In_Elem"}
@@ -55,7 +55,7 @@ const Header = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
             height={29}
           />
         </a>
-        <a target="_blank" href="">
+        <a target="_blank" href="https://wa.me/4917683419242">
           <Image
             className="headericons Fade_In_Elem"
             src="/whatsapp.svg"
