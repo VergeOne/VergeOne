@@ -83,21 +83,60 @@ export default function Home() {
   }, []);
   // ############################# USAGE MANAGEMENT #############################
   // ############################# USAGE MANAGEMENT #############################
-
-  //TODO: mach das fertig, aktuell print wenn maus in container, jetzt binde ein div dran und lass es bewegen.
+  //
+  //
+  //
+  //
+  /// ############################# CONTAINER HOVER EFFECT #############################
+  /// ############################# CONTAINER HOVER EFFECT #############################
   useEffect(() => {
-    document.addEventListener("mousemove", (evt: MouseEvent) => {
-      let rects = document.querySelectorAll(".anim_cont_grad");
-      if (
-        evt.clientX > rects[0].getBoundingClientRect().left &&
-        evt.clientX < rects[0].getBoundingClientRect().right &&
-        evt.clientY > rects[0].getBoundingClientRect().top &&
-        evt.clientY < rects[0].getBoundingClientRect().bottom
-      ) {
-        console.log("inside");
+    const rects = document.querySelectorAll(".anim_cont_grad");
+
+    for (let rect of rects) {
+      rect = rect as HTMLElement;
+      const element: HTMLElement = rect as HTMLElement;
+      const blob = element.querySelector(".blob_to_move") as HTMLElement;
+
+      element.addEventListener("mousemove", (evt) => {
+        // Get the current bounds of the container
+        const rectBounds = element.getBoundingClientRect();
+
+        // Calculate relative positions
+        const relativeX = evt.clientX - rectBounds.left;
+        const relativeY = evt.clientY - rectBounds.top;
+
+        // Check if the mouse is inside the container's bounds
+        if (
+          relativeX >= 0 &&
+          relativeX <= rectBounds.width &&
+          relativeY >= 0 &&
+          relativeY <= rectBounds.height
+        ) {
+          blob.style.opacity = "1";
+          blob.style.left = `${relativeX}px`;
+          blob.style.top = `${relativeY}px`;
+        } else {
+          blob.style.opacity = "0";
+        }
+      });
+
+      // Ensure the blob is hidden when the mouse leaves the container
+      element.addEventListener("mouseleave", () => {
+        blob.style.opacity = "0";
+      });
+    }
+
+    // Cleanup event listeners on component unmount
+    return () => {
+      for (const rect of rects) {
+        const element = rect as HTMLDivElement;
+        element.removeEventListener("mousemove", () => {});
+        element.removeEventListener("mouseleave", () => {});
       }
-    });
+    };
   }, []);
+  /// ############################# CONTAINER HOVER EFFECT #############################
+  /// ############################# CONTAINER HOVER EFFECT #############################
 
   function addUsage(id: string, value: number) {
     let currjson: usageJsonArr = usage_json;
@@ -351,7 +390,7 @@ export default function Home() {
             Alle Vorteile auf einen Blick
           </h2>
           <div className="grid grid-cols-1 desktop:mt-10 lg:grid-cols-5 gap-x-4 gap-y-4 w-[85%] backdrop-blur-md rounded-3xl font-light">
-            <div className="flex anim_cont_grad flex-col h-80 xl:h-72 missionItem text-center rounded-xl lg:col-span-2 bg-gray-200/15 items-center justify-start tracking-[0.2em] px-9 py-7">
+            <div className="flex anim_cont_grad overflow-hidden relative flex-col h-80 xl:h-72 missionItem text-center rounded-xl lg:col-span-2 bg-gray-200/15 items-center justify-start tracking-[0.2em] px-9 py-7">
               <div className="flex justify-center items-center h-[18%] lg:h-1/4">
                 <h3
                   className={
@@ -369,8 +408,15 @@ export default function Home() {
                   sorgen für verlässliche Informationen.
                 </p>
               </div>
+              <Image
+                className="blur-[100px] transition-opacity opacity-0 select-none absolute -translate-y-1/2 -translate-x-1/2 blob_to_move"
+                src="/hero_high.svg"
+                alt="Blob"
+                width={600}
+                height={450}
+              />
             </div>
-            <div className="flex flex-col h-80 xl:h-72 missionItem lg:col-span-3 text-center rounded-xl bg-gray-200/30 items-center justify-center tracking-[0.2em] px-9 py-7">
+            <div className="flex flex-col relative anim_cont_grad overflow-hidden h-80 xl:h-72 missionItem lg:col-span-3 text-center rounded-xl bg-gray-200/30 items-center justify-center tracking-[0.2em] px-9 py-7">
               <div className="flex justify-center items-center h-[18%] lg:h-1/4">
                 <h3
                   className={
@@ -388,8 +434,15 @@ export default function Home() {
                   und sind leicht zugänglich und verwaltbar.
                 </p>
               </div>
+              <Image
+                className="blur-[100px] transition-opacity opacity-0 select-none absolute -translate-y-1/2 -translate-x-1/2 blob_to_move"
+                src="/hero_high.svg"
+                alt="Blob"
+                width={600}
+                height={450}
+              />
             </div>
-            <div className="flex flex-col h-80 xl:h-72 missionItem text-center rounded-xl lg:col-span-3 bg-gray-200/15 lg:bg-gray-200/30 items-center justify-start tracking-[0.2em] px-9 py-7">
+            <div className="flex flex-col relative anim_cont_grad overflow-hidden h-80 xl:h-72 missionItem text-center rounded-xl lg:col-span-3 bg-gray-200/15 lg:bg-gray-200/30 items-center justify-start tracking-[0.2em] px-9 py-7">
               <div className="flex justify-center items-center h-[18%] lg:h-1/4">
                 <h3
                   className={
@@ -407,8 +460,15 @@ export default function Home() {
                   machen.
                 </p>
               </div>
+              <Image
+                className="blur-[100px] transition-opacity opacity-0 select-none absolute -translate-y-1/2 -translate-x-1/2 blob_to_move"
+                src="/hero_high.svg"
+                alt="Blob"
+                width={600}
+                height={450}
+              />
             </div>
-            <div className="flex flex-col missionItem h-80 xl:h-72 lg:col-span-2 text-center rounded-xl bg-gray-200/30 lg:bg-gray-200/15 items-center justify-center tracking-[0.2em] px-9 py-7">
+            <div className="flex flex-col relative anim_cont_grad overflow-hidden missionItem h-80 xl:h-72 lg:col-span-2 text-center rounded-xl bg-gray-200/30 lg:bg-gray-200/15 items-center justify-center tracking-[0.2em] px-9 py-7">
               <div className="h-[18%] lg:h-1/4 flex justify-center items-center">
                 <h3
                   className={
@@ -426,6 +486,13 @@ export default function Home() {
                   konzentrieren.
                 </p>
               </div>
+              <Image
+                className="blur-[100px] transition-opacity opacity-0 select-none absolute -translate-y-1/2 -translate-x-1/2 blob_to_move"
+                src="/hero_high.svg"
+                alt="Blob"
+                width={600}
+                height={450}
+              />
             </div>
           </div>
         </div>
@@ -437,21 +504,35 @@ export default function Home() {
         Kundenstimmen
       </h2>
       <div className="grid grid-cols-1 Fade_In_Elem lg:grid-cols-2 gap-y-6 gap-x-6 my-16 w-full px-[8%] ">
-        <div className="review">
+        <div className="review relative anim_cont_grad overflow-hidden ">
           <h2>LaMa Bio</h2>
           <p>
             Toller Service. Kann ich nur weiterempfehlen. Lief alles reibungslos
             ab und jegliche Anfragen wurden schnellstmöglich überarbeitet. Kann
             ich nur weiterempfehlen.
           </p>
+          <Image
+            className="blur-[100px] transition-opacity opacity-0 select-none absolute -translate-y-1/2 -translate-x-1/2 blob_to_move"
+            src="/hero_high.svg"
+            alt="Blob"
+            width={500}
+            height={350}
+          />
         </div>
-        <div className="review">
+        <div className="review relative anim_cont_grad overflow-hidden ">
           <h2>LaMa Bio</h2>
           <p>
             Toller Service. Kann ich nur weiterempfehlen. Lief alles reibungslos
             ab und jegliche Anfragen wurden schnellstmöglich überarbeitet. Kann
             ich nur weiterempfehlen.
           </p>
+          <Image
+            className="blur-[100px] transition-opacity opacity-0 select-none absolute -translate-y-1/2 -translate-x-1/2 blob_to_move"
+            src="/hero_high.svg"
+            alt="Blob"
+            width={500}
+            height={350}
+          />
         </div>
       </div>
       {/* End Customer Wrapper */}
