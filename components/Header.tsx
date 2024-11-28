@@ -46,7 +46,7 @@ const Header = ({ scrolltoAnchor }: { scrolltoAnchor: any }) => {
         height={52}
       />
       <div className="animate-fadeRight-sm sm:animate-fadeRight flex select-none gap-6 2xl:gap-8 items-center absolute left-1/2 -translate-x-1/2 sm:left-auto sm:right-8 md:right-12 lg:right-14 xl:right-16 2xl:right-20">
-        <a target="_blank" href="https://instagram.com/_vergeone_">
+        <a target="_blank" href="https://instagram.com/vergeone_official">
           <Image
             className="headericons Fade_In_Elem"
             src="/instagram.svg"

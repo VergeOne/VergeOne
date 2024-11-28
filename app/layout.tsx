@@ -16,31 +16,35 @@ export const metadata: Metadata = {
   title: "Verge-One",
   applicationName: "Verge-One",
   creator: "Verge-One",
+  robots: "index, follow",
   openGraph: {
-    title: "Verge-One",
+    title: "Verge-One | Maßgeschneiderte Web-Dienstleistungen",
     type: "website",
     countryName: "Germany",
-    description: "Official Website for the Verge-One Company",
+    description:
+      "Innovative Web-Lösungen für Ihr Unternehmen – Automatisierungen, Datenbanken und mehr.",
     siteName: "Verge-One",
+    url: "https://verge-one.com",
   },
   keywords: [
     "VergeOne",
     "Verge-One",
     "Verge One",
-    "verge one",
-    "Automationen",
     "Custom Apps",
-    "Datenbanken",
-    "Web Dienstleistungen",
-    "Anwendungen",
+    "Maßgeschneiderte Webanwendungen",
+    "Automatisierungslösungen",
+    "Datenbankintegration",
+    "Web-App-Entwicklung",
     "IT Dienstleister",
-    "Web Dienstleister",
-    "IT Startups",
-    "Internet Dienstleister",
+    "Next.js Entwicklung",
+    "Softwareentwicklung",
+    "Internetdienstleister",
+    "Webentwicklung",
   ],
+
   publisher: "Verge-One",
   description:
-    "Ihr Partner für Web-Dienstleistungen, die ihr Unternehmen herausstechen lassen. Maßgeschneiderte Applikationen, Automationen und Datenbankanbindungen, die Ihnen nicht nur Zeit und Geld sparen, sondern den Stress aus ihrem Alltag nehmen. ",
+    "Verge-One ist Ihr Partner für innovative Web-Dienstleistungen und individuelle Softwarelösungen. Wir entwickeln maßgeschneiderte Applikationen, Automatisierungen und Datenbankanbindungen, die Prozesse effizienter gestalten und Ihnen Zeit und Kosten sparen. Entdecken Sie Webentwicklung mit modernsten Technologien – maßgeschneidert für Ihr Unternehmen.",
 };
 
 export default function RootLayout({

@@ -29,8 +29,8 @@ const Footer = ({
           inter.className + " flex gap-12 absolute left-1/2 -translate-x-1/2"
         }
       >
-        <Link href={"/impressum"}>Impressum</Link>
-        <Link href={"/datenschutzerklärung"}>Datenschutzerklärung</Link>
+        <Link href={"/Impressum"}>Impressum</Link>
+        <Link href={"/Datenschutz"}>Datenschutzerklärung</Link>
       </div>
       <div></div>
     </div>
