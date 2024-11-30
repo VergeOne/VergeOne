@@ -11,6 +11,7 @@ const _ = require("lodash");
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2 } from "gsap";
 import Logo from "@/components/logo";
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 const monte = Montserrat({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"], weight: ["300"] });
@@ -25,6 +26,7 @@ export default function Home() {
   //
   // ############################# STATE MANAGEMENT #############################
   // ############################# STATE MANAGEMENT #############################
+  //
   const [formname, setformname] = useState("");
   const [formemail, setformemail] = useState("");
   const [formmessage, setformmessage] = useState("");
@@ -44,6 +46,7 @@ export default function Home() {
   const [usage_json, setUsage_json] = useState<usageJsonArr>([
     { id: "visit", value: 1 },
   ]);
+  //
   // ############################# STATE MANAGEMENT #############################
   // ############################# STATE MANAGEMENT #############################
   //
