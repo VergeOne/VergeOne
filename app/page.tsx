@@ -529,7 +529,7 @@ export default function Home() {
           Wir freuen Uns auf Ihre Nachricht!
         </h2>
         <div className="Fade_In_Elem">
-          <p>Vor-, Nachname</p>
+          <p>Name</p>
           <input
             id="formname"
             type="text"
